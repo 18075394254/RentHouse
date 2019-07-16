@@ -1,7 +1,9 @@
-package com.example.user.renthouse;
+package activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.user.renthouse.R;
 
 public class MainActivity extends AppCompatActivity {
 
