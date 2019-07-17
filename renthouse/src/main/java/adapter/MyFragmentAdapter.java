@@ -29,6 +29,9 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titles[position];
+    }
 
 }

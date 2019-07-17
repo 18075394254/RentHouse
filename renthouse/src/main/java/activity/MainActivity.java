@@ -1,14 +1,17 @@
 package activity;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.user.renthouse.R;
 
@@ -32,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
+        //v7包下去除标题栏代码：
+        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
+
         mTabLayout = (TabLayout) findViewById(R.id.tablayout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -98,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         Drawable d = null;
         for (int i = 0; i < mTabLayout.getTabCount(); i++){
             TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            //通过相应的布局文件获取view
+        /*    //通过相应的布局文件获取view
             View view = View.inflate(this, R.layout.tab_item, null);
             ImageView iv = (ImageView) view.findViewById(R.id.tab_imageView);
             TextView tv = (TextView) view.findViewById(R.id.tab_textView);
@@ -107,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
             //设置tab图片
             iv.setImageResource(tab_imgs[i]);
             //给tab设置view
-            tab.setCustomView(view);
+            tab.setCustomView(view);*/
 
-          /*  switch (i){
+           switch (i){
                 case 0:
                     d = getResources().getDrawable(R.drawable.tab_shouye);
                     break;
@@ -126,11 +135,8 @@ public class MainActivity extends AppCompatActivity {
                     d = getResources().getDrawable(R.drawable.tab_me);
                     break;
             }
-            tab.setIcon(d);*/
+            tab.setIcon(d);
         }
-
-
     }
-
 
 }

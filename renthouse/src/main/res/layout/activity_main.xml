@@ -6,12 +6,6 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <!-- <SearchView
-       android:id="@+id/searchView"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-        android:queryHint="输入地址区域名字搜索"
-     />-->
 
    <android.support.v4.view.ViewPager
        android:layout_width="match_parent"

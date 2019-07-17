@@ -1,1 +1,1 @@
-include ':renthouse'
+include ':renthouse', ':banner'
