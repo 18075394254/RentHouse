@@ -7,4 +7,5 @@
     <color name="tab_textColorSelect">#8DA7F7</color>
     <color name="tab_textColor">#5C5C5C</color>
     <color name="White">#FFFFFF</color>
+    <color name="imageBackground">#E8E8E8</color>
 </resources>

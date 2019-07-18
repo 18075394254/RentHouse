@@ -1,55 +1,34 @@
 package fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.user.renthouse.R;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.transformer.AccordionTransformer;
-import com.youth.banner.transformer.BackgroundToForegroundTransformer;
-import com.youth.banner.transformer.CubeInTransformer;
-import com.youth.banner.transformer.CubeOutTransformer;
 import com.youth.banner.transformer.DefaultTransformer;
-import com.youth.banner.transformer.DepthPageTransformer;
-import com.youth.banner.transformer.FlipHorizontalTransformer;
-import com.youth.banner.transformer.FlipVerticalTransformer;
-import com.youth.banner.transformer.ForegroundToBackgroundTransformer;
-import com.youth.banner.transformer.RotateDownTransformer;
-import com.youth.banner.transformer.RotateUpTransformer;
-import com.youth.banner.transformer.ScaleInOutTransformer;
-import com.youth.banner.transformer.StackTransformer;
-import com.youth.banner.transformer.TabletTransformer;
-import com.youth.banner.transformer.ZoomInTransformer;
-import com.youth.banner.transformer.ZoomOutSlideTransformer;
-import com.youth.banner.transformer.ZoomOutTranformer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import activity.MainActivity;
-import adapter.GridAdapter;
+import adapter.RecyclerAdapter;
 import application.MyApplication;
+import bean.AdapterInfo;
+import decoration.SpacesItemDecoration;
 import loader.GlideImageLoader;
 
 
@@ -62,7 +41,22 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
     private RecyclerView gridRecyclerView;
     private GridView mGridView;
     String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","平台分类","免费看房"};
+    int[] imgs = new int[]{R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,R.drawable.six,R.drawable.seven,R.drawable.eight};
     List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
+
+    public static final int LINEAR_VERTICAL = 1;
+    public static final int LINEAR_HORIZONTAL = 2;
+    public static final int GRID_VERTICAL = 3;
+    public static final int GRID_HORIZONTAL = 4;
+    public static final int STAGGER_VERTICAL = 5;
+    public static final int STAGGER_HORIZONTAL = 6;
+
+    private int type;
+
+    private RecyclerView rv_content;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerAdapter mAdapter;
+
     public void initData(){
         transformers.add(DefaultTransformer.class);
        /* transformers.add(AccordionTransformer.class);
@@ -95,56 +89,18 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         //设置轮播图的样式
         initData();
         //初始化网格状RecyclerView
-       // initGridRecycler();
-        //初始化GridView
-        initGridView();
-
+        initGridRecycler();
+       // setStatusColor();
+        chooseLayoutManager(4);
+        initRvContent();
         return mView;
     }
 
-    private void initGridView() {
-        mGridView= mView.findViewById(R.id.gridView);
-        onArrayListShow();
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
 
-                        break;
-                    case 1:
 
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
-
-                        break;
-
-                    case 7:
-
-                        break;
-                }
-            }
-        });
+    private void initGridRecycler() {
+        rv_content = (RecyclerView) mView.findViewById(R.id.gidRecyclerView);
     }
-
-   /* private void initGridRecycler() {
-        gridRecyclerView = mView.findViewById(R.id.gidRecyclerView);
-        gridRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
-        gridRecyclerView.setAdapter(new GridAdapter(getActivity(),titles));
-
-    }*/
 
     //初始书ViewPager轮播
     private void initBanner() {
@@ -177,51 +133,6 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         mSearchView.setQueryHint("输入地址区域名字搜索");
     }
 
-    private void onArrayListShow() {
-        ArrayList<String> list1=new ArrayList<>();
-        list1.add("单间");
-        list1.add("整套");
-        list1.add("品牌公寓");
-        list1.add("月付房源");
-        list1.add("求租贴");
-        list1.add("我要发布");
-        list1.add("平台分类");
-        list1.add("免费看房");
-
-        ArrayList<Integer> list2=new ArrayList<>();
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-        list2.add(R.mipmap.log);
-
-        //生成动态数组，并且转入数据
-        ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
-        for(int i=0;i<list1.size();i++)
-        {
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put("ItemImage", list2.get(i));//添加图像资源的ID
-            map.put("ItemText", list1.get(i));//按序号做ItemText
-            lstImageItem.add(map);
-        }
-//生成适配器的ImageItem <====> 动态数组的元素，两者一一对应
-        SimpleAdapter saImageItems = new SimpleAdapter(getActivity(), //没什么解释
-                lstImageItem,//数据来源
-                R.layout.item_recyclerviedw,//night_item的XML实现
-
-                //动态数组与ImageItem对应的子项
-                new String[] {"ItemImage","ItemText"},
-
-                //ImageItem的XML文件里面的一个ImageView,两个TextView ID
-                new int[] {R.id.recyclerImage,R.id.recyclerText});
-        mGridView.setNumColumns(4);
-//添加并且显示
-        mGridView.setAdapter(saImageItems);
-    }
-
     @Override
     public void OnBannerClick(int position) {
         Toast.makeText(getContext(),"你点击了："+position,Toast.LENGTH_SHORT).show();
@@ -240,4 +151,48 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         //结束轮播
         banner.stopAutoPlay();
     }
+
+
+    private List<AdapterInfo> getAdapterInfos() {
+        List<AdapterInfo> infos = new ArrayList<>();
+        AdapterInfo info = null;
+        for (int i = 0; i < titles.length; i++) {
+            info = new AdapterInfo();
+            info.message = titles[i];
+            info.img = imgs[i];
+            infos.add(info);
+        }
+        return infos;
+    }
+
+
+    private void chooseLayoutManager(int count) {
+
+                mLayoutManager = new GridLayoutManager(getActivity(), count, GridLayoutManager.VERTICAL, true);
+                final GridLayoutManager manager = (GridLayoutManager) mLayoutManager;
+               /* manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        return position % (manager.getSpanCount() + 1) == 0 ? manager.getSpanCount() : 1;
+                    }
+                });*/
+    }
+
+    private void initRvContent() {
+        mAdapter = new RecyclerAdapter(getAdapterInfos());
+        rv_content.setAdapter(mAdapter);
+        rv_content.setLayoutManager(mLayoutManager);
+
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
+
+        rv_content.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+        //rv_content.addItemDecoration(new SpacesItemDecoration(dip2px(1), dip2px(1), Color.BLUE));
+    }
+
+    public int dip2px(float dpValue) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, getResources().getDisplayMetrics());
+    }
+
 }
