@@ -49,6 +49,16 @@
         <item>banner自定义布局文件（这里通过修改ViewPager举一反三吧）</item>
         <item>！！banner更多用法请看文档，这里就不一一列举了！</item>
     </array>
+    <array name="miaoshu">
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+        <item>文本描述文本描述文本描述</item>
+    </array>
     <array name="anim">
         <item>Default</item>
         <item>Accordion</item>

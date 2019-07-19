@@ -28,6 +28,7 @@ import java.util.List;
 import adapter.RecyclerAdapter;
 import application.MyApplication;
 import bean.AdapterInfo;
+import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
 import loader.GlideImageLoader;
 
@@ -38,7 +39,6 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
     private SearchView mSearchView;
     LinearLayout cityLin,messageLin;
     Banner banner;
-    private RecyclerView gridRecyclerView;
     private GridView mGridView;
     String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","平台分类","免费看房"};
     int[] imgs = new int[]{R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,R.drawable.six,R.drawable.seven,R.drawable.eight};
@@ -53,7 +53,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
 
     private int type;
 
-    private RecyclerView rv_content;
+    private RecyclerView gridRecyclerView,twoRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerAdapter mAdapter;
 
@@ -88,18 +88,66 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         initBanner();
         //设置轮播图的样式
         initData();
-        //初始化网格状RecyclerView
-        initGridRecycler();
-       // setStatusColor();
-        chooseLayoutManager(4);
-        initRvContent();
+        //初始化第一个RecyclerView
+        initOneRecyclerView();
+
+        //初始化第二个RecyclerView
+        initTwoRecyclerView();
         return mView;
     }
+    //第二个RecyclerView
+    private void initTwoRecyclerView() {
+        twoRecyclerView= mView.findViewById(R.id.twoRecyclerView);
+        //设置每行的列数
+        mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, true);
+        //添加数据
+        List<AdapterInfo> twoInfos = new ArrayList<>();
+        AdapterInfo info = null;
+        String[] urls = getResources().getStringArray(R.array.url1);
+        String[] tips = getResources().getStringArray(R.array.miaoshu);
+        for (int i = 0; i < tips.length; i++) {
+            info = new AdapterInfo();
+            info.message = titles[i];
+            info.img = R.mipmap.examples;
+            twoInfos.add(info);
+        }
 
+        //设置adapter的数据
+        mAdapter = new RecyclerAdapter(twoInfos);
+        twoRecyclerView.setAdapter(mAdapter);
+        twoRecyclerView.setLayoutManager(mLayoutManager);
 
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
+        twoRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+    }
 
-    private void initGridRecycler() {
-        rv_content = (RecyclerView) mView.findViewById(R.id.gidRecyclerView);
+    //第一个RecyclerView
+    private void initOneRecyclerView() {
+        gridRecyclerView = (RecyclerView) mView.findViewById(R.id.gidRecyclerView);
+        //设置每行的列数
+        mLayoutManager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, true);
+        //添加数据
+        List<AdapterInfo> oneInfos = new ArrayList<>();
+        AdapterInfo info = null;
+        for (int i = 0; i < titles.length; i++) {
+            info = new AdapterInfo();
+            info.message = titles[i];
+            info.img = imgs[i];
+            oneInfos.add(info);
+        }
+
+        //设置adapter的数据
+        mAdapter = new RecyclerAdapter(oneInfos);
+        gridRecyclerView.setAdapter(mAdapter);
+        gridRecyclerView.setLayoutManager(mLayoutManager);
+
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
+        gridRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+
     }
 
     //初始书ViewPager轮播
@@ -152,44 +200,6 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         banner.stopAutoPlay();
     }
 
-
-    private List<AdapterInfo> getAdapterInfos() {
-        List<AdapterInfo> infos = new ArrayList<>();
-        AdapterInfo info = null;
-        for (int i = 0; i < titles.length; i++) {
-            info = new AdapterInfo();
-            info.message = titles[i];
-            info.img = imgs[i];
-            infos.add(info);
-        }
-        return infos;
-    }
-
-
-    private void chooseLayoutManager(int count) {
-
-                mLayoutManager = new GridLayoutManager(getActivity(), count, GridLayoutManager.VERTICAL, true);
-                final GridLayoutManager manager = (GridLayoutManager) mLayoutManager;
-               /* manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        return position % (manager.getSpanCount() + 1) == 0 ? manager.getSpanCount() : 1;
-                    }
-                });*/
-    }
-
-    private void initRvContent() {
-        mAdapter = new RecyclerAdapter(getAdapterInfos());
-        rv_content.setAdapter(mAdapter);
-        rv_content.setLayoutManager(mLayoutManager);
-
-        //添加ItemDecoration，item之间的间隔
-        int leftRight = dip2px(15);
-        int topBottom = 0;
-
-        rv_content.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
-        //rv_content.addItemDecoration(new SpacesItemDecoration(dip2px(1), dip2px(1), Color.BLUE));
-    }
 
     public int dip2px(float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, getResources().getDisplayMetrics());

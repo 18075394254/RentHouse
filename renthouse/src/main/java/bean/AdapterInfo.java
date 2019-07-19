@@ -6,7 +6,7 @@ package bean;
  */
 
 public class AdapterInfo {
-    public String message;
+       public String message;
     public int img;
 
 }
