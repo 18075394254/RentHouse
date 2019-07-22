@@ -25,9 +25,14 @@ import com.youth.banner.transformer.DefaultTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.RecyclerAdapter;
+import adapter.RecyclerFourAdapter;
+import adapter.RecyclerOneAdapter;
+import adapter.RecyclerThreeAdapter;
+import adapter.RecyclerTwoAdapter;
 import application.MyApplication;
 import bean.AdapterInfo;
+import bean.FourAdapterInfo;
+import bean.ThreeAdapterInfo;
 import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
 import loader.GlideImageLoader;
@@ -53,9 +58,12 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
 
     private int type;
 
-    private RecyclerView gridRecyclerView,twoRecyclerView;
+    private RecyclerView gridRecyclerView,twoRecyclerView,threeRecyclerView,fourRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private RecyclerAdapter mAdapter;
+    private RecyclerOneAdapter mOneAdapter;
+    private RecyclerTwoAdapter mTwoAdapter;
+    private RecyclerThreeAdapter mThreeAdapter;
+    private RecyclerFourAdapter mFourAdapter;
 
     public void initData(){
         transformers.add(DefaultTransformer.class);
@@ -93,32 +101,104 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
 
         //初始化第二个RecyclerView
         initTwoRecyclerView();
+
+        //初始化第三个RecyclerView
+        initThreeRecyclerView();
+
+        //初始化第四个RecyclerView
+        initFourRecyclerView();
+
         return mView;
     }
+
+    //第四个RecyclerView
+    private void initFourRecyclerView() {
+        fourRecyclerView = (RecyclerView) mView.findViewById(R.id.fourRecyclerView);
+        //设置每行的列数
+        mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        //添加数据
+        List<FourAdapterInfo> fourInfos = new ArrayList<>();
+        FourAdapterInfo info = null;
+        String[] urls = getResources().getStringArray(R.array.url4);
+        String[] titles = getResources().getStringArray(R.array.fourtitle);
+        String[] prices = getResources().getStringArray(R.array.fourprice);
+        String[] sizes = getResources().getStringArray(R.array.foursize);
+        for (int i = 0; i < titles.length; i++) {
+            info = new FourAdapterInfo();
+            info.title = titles[i];
+            info.price = prices[i];
+            info.size = sizes[i];
+            info.url = urls[i];
+            fourInfos.add(info);
+        }
+
+        //设置adapter的数据
+        mFourAdapter = new RecyclerFourAdapter(fourInfos);
+        fourRecyclerView.setAdapter(mFourAdapter);
+        fourRecyclerView.setLayoutManager(mLayoutManager);
+
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
+        fourRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+
+    }
+
+    //第三个RecyclerView
+    private void initThreeRecyclerView() {
+        threeRecyclerView = (RecyclerView) mView.findViewById(R.id.threeRecyclerView);
+        //设置每行的列数
+        mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
+        //添加数据
+        List<ThreeAdapterInfo> threeInfos = new ArrayList<>();
+        ThreeAdapterInfo info = null;
+        String[] urls = getResources().getStringArray(R.array.url3);
+        String[] titles = getResources().getStringArray(R.array.threetitle);
+        for (int i = 0; i < titles.length; i++) {
+            info = new ThreeAdapterInfo();
+            info.title = titles[i];
+            info.url = urls[i];
+            threeInfos.add(info);
+        }
+
+        //设置adapter的数据
+        mThreeAdapter = new RecyclerThreeAdapter(threeInfos);
+        threeRecyclerView.setAdapter(mThreeAdapter);
+        threeRecyclerView.setLayoutManager(mLayoutManager);
+
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
+        threeRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+
+    }
+
     //第二个RecyclerView
     private void initTwoRecyclerView() {
         twoRecyclerView= mView.findViewById(R.id.twoRecyclerView);
         //设置每行的列数
-        mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, true);
+        mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         //添加数据
-        List<AdapterInfo> twoInfos = new ArrayList<>();
-        AdapterInfo info = null;
-        String[] urls = getResources().getStringArray(R.array.url1);
-        String[] tips = getResources().getStringArray(R.array.miaoshu);
-        for (int i = 0; i < tips.length; i++) {
-            info = new AdapterInfo();
-            info.message = titles[i];
-            info.img = R.mipmap.examples;
+        List<TwoAdapterInfo> twoInfos = new ArrayList<>();
+        TwoAdapterInfo info = null;
+        String[] urls = getResources().getStringArray(R.array.url2);
+        String[] miaoshu = getResources().getStringArray(R.array.twomiaoshu);
+        String[] titles = getResources().getStringArray(R.array.twotitle);
+        for (int i = 0; i < miaoshu.length; i++) {
+            info = new TwoAdapterInfo();
+            info.title = titles[i];
+            info.miaoshu = miaoshu[i];
+            info.url = urls[i];
             twoInfos.add(info);
         }
 
         //设置adapter的数据
-        mAdapter = new RecyclerAdapter(twoInfos);
-        twoRecyclerView.setAdapter(mAdapter);
+        mTwoAdapter = new RecyclerTwoAdapter(twoInfos);
+        twoRecyclerView.setAdapter(mTwoAdapter);
         twoRecyclerView.setLayoutManager(mLayoutManager);
 
         //添加ItemDecoration，item之间的间隔
-        int leftRight = dip2px(15);
+        int leftRight = dip2px(10);
         int topBottom = 0;
         twoRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
     }
@@ -127,7 +207,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
     private void initOneRecyclerView() {
         gridRecyclerView = (RecyclerView) mView.findViewById(R.id.gidRecyclerView);
         //设置每行的列数
-        mLayoutManager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, true);
+        mLayoutManager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
         //添加数据
         List<AdapterInfo> oneInfos = new ArrayList<>();
         AdapterInfo info = null;
@@ -139,8 +219,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
         }
 
         //设置adapter的数据
-        mAdapter = new RecyclerAdapter(oneInfos);
-        gridRecyclerView.setAdapter(mAdapter);
+        mOneAdapter = new RecyclerOneAdapter(oneInfos);
+        gridRecyclerView.setAdapter(mOneAdapter);
         gridRecyclerView.setLayoutManager(mLayoutManager);
 
         //添加ItemDecoration，item之间的间隔
@@ -177,8 +257,11 @@ public class ShouYeFragment extends Fragment implements OnBannerListener {
                 return false;
             }
         });
-        mSearchView.setFocusable(false);
+
         mSearchView.setQueryHint("输入地址区域名字搜索");
+        mSearchView.setFocusable(false);
+      //  mSearchView.setEnabled(false);
+       // mSearchView.clearFocus();
     }
 
     @Override

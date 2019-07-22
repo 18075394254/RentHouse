@@ -5,6 +5,7 @@ package bean;
  */
 
 public class TwoAdapterInfo {
-    public String message;
+    public String title;
+    public String miaoshu;
     public String url;
 }

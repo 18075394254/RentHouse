@@ -1,7 +1,24 @@
-<ScrollView
 
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/shouyeText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="首页"
+        android:textSize="20sp"
+        android:gravity="center"
+
+        />
+
+<ScrollView
+
+
     tools:context="fragment.ShouYeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,20 +30,6 @@
               android:orientation="vertical"
              >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/shouyeText"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="首页"
-            android:textSize="20sp"
-            android:gravity="center"
-
-            />
-    </LinearLayout>
 
 <LinearLayout
     android:id="@+id/searchLin"
@@ -66,12 +69,12 @@
         android:id="@+id/searchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:background="@drawable/searchviewshape"
         android:iconifiedByDefault="false"
         android:layout_weight="9.07"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+
         />
 
     <LinearLayout
@@ -79,7 +82,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-
         android:orientation="vertical"
         >
 
@@ -129,13 +131,14 @@
     android:layout_height="wrap_content"
     >
     <TextView
-        android:id="@+id/mukuaiText"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:textSize="15sp"
         android:layout_alignParentLeft="true"
         android:text="模块房源"
+        android:textColor="#000000"
         />
     <TextView
         android:id="@+id/moreText"
@@ -148,12 +151,87 @@
         />
 </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/twoRecyclerView"
+    android:id="@+id/twoRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/imageBackground"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="15sp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"
+        android:text="特色推荐"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/threeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/imageBackground"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:layout_alignParentLeft="true"
+            android:text="阳光收费"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/more2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:textSize="15sp"
+            android:text="查看更多"
+            />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fourRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/imageBackground"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="15sp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"
+        android:text="热门小区"
         />
 
 </LinearLayout>
 </ScrollView>
+</LinearLayout>

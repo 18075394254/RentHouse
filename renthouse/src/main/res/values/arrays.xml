@@ -1,94 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //首页ViewPager轮播图使用的url
     <array name="url">
-        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg</item>
-        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg</item>
-        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic259ohaj30ci08c74r.jpg</item>
-        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic2b16zuj30ci08cwf4.jpg</item>
-        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic2e7vsaj30ci08cglz.jpg</item>
+        <item>http://pic30.photophoto.cn/20140313/0040039490056765_b.jpg</item>
+        <item>http://pic15.photophoto.cn/20100504/0016028085111675_b.jpg</item>
+        <item>http://img02.tooopen.com/images/20150712/tooopen_sy_133602159972.jpg</item>
+        <item>http://pic35.photophoto.cn/20150616/0050046257818227_b.jpg</item>
+        <item>http://pic23.photophoto.cn/20120429/0016028070415901_b.jpg</item>
     </array>
 
-    <array name="url1">
-        <item>http://img.zcool.cn/community/01700557a7f42f0000018c1bd6eb23.jpg</item>
-    </array>
+    //首页第二个RecyclerView使用的url
     <array name="url2">
-        <item>http://img.zcool.cn/community/01d28457d621800000018c1bb7877e.jpg</item>
-        <item>http://img.zcool.cn/community/01ae5656e1427f6ac72531cb72bac5.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/d28d86d81f6aaa5fdfade106e14dbdce/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/00439a4ea0924649283f5962c5df353a/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/32800dcd91640bf34bb607923861d9da/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/c2400e16ca04c83c1201f698662ffc54/600x450c.jpg</item>
+
     </array>
+
+    //首页第三个RecyclerView使用的url
+    <array name="url3">
+        <item>https://pic1.ajkimg.com/display/anjuke/f35c43211d5e22c14f0262ff18265bc7/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/4fa963e6ada1af84411227ca094911fd/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/72f8230d08bea0e62568fac8d139db42/600x450c.jpg</item>
+    </array>
+
+    //首页第si个RecyclerView使用的url
     <array name="url4">
-        <item>http://img.zcool.cn/community/01b72057a7e0790000018c1bf4fce0.png</item>
-        <item>http://img.zcool.cn/community/01fca557a7f5f90000012e7e9feea8.jpg</item>
-        <item>http://img.zcool.cn/community/01996b57a7f6020000018c1bedef97.jpg</item>
-        <item>http://img.zcool.cn/community/01700557a7f42f0000018c1bd6eb23.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/f35c43211d5e22c14f0262ff18265bc7/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/4fa963e6ada1af84411227ca094911fd/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/72f8230d08bea0e62568fac8d139db42/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/f35c43211d5e22c14f0262ff18265bc7/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/4fa963e6ada1af84411227ca094911fd/600x450c.jpg</item>
+        <item>https://pic1.ajkimg.com/display/anjuke/72f8230d08bea0e62568fac8d139db42/600x450c.jpg</item>
     </array>
-    <!-- http://588ku.com/image/daitengmandelitizi.html -->
-    <array name="test_num_url">
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f19cc0079.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1ac12d1d.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1bad97d1.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1c83c228.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1d53e3dd.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1e37fea9.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1ef4d709.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f20b3ea10.jpg</item>
-        <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f21927f8d.jpg</item>
+
+   //首页第二个Recycler View使用的字符串
+    <array name="twotitle">
+        <item>地铁周边</item>
+        <item>精选单间</item>
+        <item>畅享两居室</item>
+        <item>品质好房</item>
+
     </array>
-    <array name="title">
-        <item>51巅峰钜惠</item>
-        <item>十大星级品牌联盟，全场2折起</item>
-        <item>生命不是要超越别人，而是要超越自己。</item>
-        <item>己所不欲，勿施于人。——孔子</item>
-        <item>嗨购5折不要停</item>
+
+    //首页第二个Recycler View使用的字符串
+    <array name="twomiaoshu">
+        <item>文本描述1111文本描述</item>
+        <item>文本描述2222文本描述</item>
+        <item>文本描述3333文本描述</item>
+        <item>文本描述4444文本描述</item>
     </array>
-    <array name="demo_list">
-        <item>banner动画预览</item>
-        <item>banner内置样式预览</item>
-        <item>banner指示器位置设置预览</item>
-        <item>banner一些自定义样式方法预览</item>
-        <item>banner加载本地图片</item>
-        <item>banner自定义布局文件（这里通过修改ViewPager举一反三吧）</item>
-        <item>！！banner更多用法请看文档，这里就不一一列举了！</item>
+
+    //首页第三个Recycler View使用的字符串
+    <array name="threetitle">
+        <item>情侣1抢先看</item>
+        <item>情侣2抢先看</item>
+        <item>情侣3抢先看</item>
     </array>
-    <array name="miaoshu">
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
-        <item>文本描述文本描述文本描述</item>
+
+    //首页第四个Recycler View使用的字符串
+    <array name="fourtitle">
+        <item>房屋标题1</item>
+        <item>房屋标题2</item>
+        <item>房屋标题3</item>
+        <item>房屋标题4</item>
+        <item>房屋标题5</item>
+        <item>房屋标题6</item>
     </array>
-    <array name="anim">
-        <item>Default</item>
-        <item>Accordion</item>
-        <item>BackgroundToForeground</item>
-        <item>ForegroundToBackground</item>
-        <item>CubeIn</item>
-        <item>CubeOut</item>
-        <item>DepthPage</item>
-        <item>FlipHorizontal</item>
-        <item>FlipVertical</item>
-        <item>RotateDown</item>
-        <item>RotateUp</item>
-        <item>ScaleInOut</item>
-        <item>Stack</item>
-        <item>Tablet</item>
-        <item>ZoomIn</item>
-        <item>ZoomOut</item>
-        <item>ZoomOutSlide</item>
+    <array name="fourprice">
+        <item>￥14000</item>
+        <item>￥14000</item>
+        <item>￥14000</item>
+        <item>￥14000</item>
+        <item>￥14000</item>
+        <item>￥14000</item>
     </array>
-    <string-array name="style">
-        <item>NOT_INDICATOR</item>
-        <item>CIRCLE_INDICATOR</item>
-        <item>NUM_INDICATOR</item>
-        <item>NUM_INDICATOR_TITLE</item>
-        <item>CIRCLE_INDICATOR_TITLE</item>
-        <item>CIRCLE_INDICATOR_TITLE_INSIDE</item>
-    </string-array>
-    <string-array name="indicator">
-        <item>LEFT</item>
-        <item>CENTER</item>
-        <item>RIGHT</item>
-    </string-array>
+
+    <array name="foursize">
+        <item>合租|次卧|13㎡</item>
+        <item>合租|次卧|13㎡</item>
+        <item>合租|次卧|13㎡</item>
+        <item>合租|次卧|13㎡</item>
+        <item>合租|次卧|13㎡</item>
+        <item>合租|次卧|13㎡</item>
+    </array>
+
+
 </resources>

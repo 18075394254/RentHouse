@@ -7,6 +7,10 @@ package bean;
 
 public class AdapterInfo {
        public String message;
-    public int img;
+        public int img;
+
+    public String toString(){
+        return "AdapterInfo = "+message+" "+img;
+    }
 
 }
