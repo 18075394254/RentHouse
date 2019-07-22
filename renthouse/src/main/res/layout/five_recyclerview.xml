@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingBottom="20dp"
+    >
+    <ImageView
+        android:id="@+id/iv_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        >
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        style="@style/MyCustomTabLayout"
+        android:textColor="@drawable/textselector"
+        android:text="整租-乐山二村"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        style="@style/MyCustomTabLayout"
+        android:textColor="@drawable/textselector"
+        android:text="一室一厅"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/star"
+            />
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            style="@style/MyCustomTabLayout"
+            android:textColor="@drawable/textselector"
+            android:text="5.0 |"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            style="@style/MyCustomTabLayout"
+            android:textColor="@drawable/textselector"
+            android:text="一室一厅 |"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="5dp"
+            />
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            style="@style/MyCustomTabLayout"
+            android:textColor="@drawable/textselector"
+            android:text="职业房东"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="5dp"/>
+
+    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址：xxxxxxxxxxxxxxx"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            >
+            <TextView
+                android:id="@+id/tv_7"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@color/tab_textColorSelect"
+                android:text="标签"
+                android:textColor="@color/tab_background"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_8"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@color/tab_textColorSelect"
+                android:text="标签"
+                android:textColor="@color/tab_background"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_9"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@color/tab_textColorSelect"
+                android:text="标签"
+                android:textColor="@color/tab_background"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            style="@style/MyCustomTabLayout"
+            android:textColor="#FF0000"
+            android:text="3500元/月"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>
