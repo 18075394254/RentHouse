@@ -29,17 +29,27 @@ public class RecyclerFourAdapter extends RecyclerView.Adapter<RecyclerFourAdapte
 
     private List<FourAdapterInfo> mDatas;
 
-    public RecyclerFourAdapter(@NonNull List<FourAdapterInfo> mDatas) {
-        this.mDatas = mDatas;
+    //定义一个接口
+    public interface OnItemClickListener{
+        void setOnitemClickListener(View view, int position);
     }
 
-    public List<FourAdapterInfo> getmDatas() {
-        return mDatas;
+    //声明一个私有变量
+    private OnItemClickListener mItemClickListener;
+
+    //提供一个公共的方法 设置接口
+    public void setListener(OnItemClickListener onItemClickListener){
+        this.mItemClickListener = onItemClickListener;
+
+    }
+
+    public RecyclerFourAdapter( List<FourAdapterInfo> mDatas) {
+        this.mDatas = mDatas;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.four_recyclerview, null));
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.four_recyclerview, null),mItemClickListener);
     }
 
     @Override
@@ -64,16 +74,26 @@ public class RecyclerFourAdapter extends RecyclerView.Adapter<RecyclerFourAdapte
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
+        private OnItemClickListener mListener;
         TextView tvInfoTitle,tvInfoPrice,tvInfoSize;
         ImageView ivInfo;
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
 
             tvInfoTitle = (TextView) itemView.findViewById(R.id.tv_title);
             tvInfoPrice = (TextView) itemView.findViewById(R.id.tv_price);
             tvInfoSize = (TextView) itemView.findViewById(R.id.tv_size);
             ivInfo = (ImageView)itemView.findViewById(R.id.iv_imageView);
+
+            this.mListener = onItemClickListener;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null){
+                        mListener.setOnitemClickListener(view,getPosition());
+                    }
+                }
+            });
         }
     }
 }

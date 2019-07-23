@@ -22,6 +22,20 @@ import bean.AdapterInfo;
 
 public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.ViewHolder> {
 
+    //定义一个接口
+    public interface OnItemClickListener{
+        void setOnItemClickListener(View view,int postion);
+    }
+
+    //声明一个私有变量
+    private OnItemClickListener mItemClickListener;
+
+    //提供一个公共的方法
+    public void setItemClickListener(OnItemClickListener mItemClickListener){
+        this.mItemClickListener = mItemClickListener;
+    }
+
+
     private List<AdapterInfo> mDatas;
 
     public RecyclerOneAdapter(@NonNull List<AdapterInfo> mDatas) {
@@ -38,7 +52,7 @@ public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyclerviedw, null));
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyclerviedw, null),mItemClickListener);
     }
 
     @Override
@@ -57,13 +71,23 @@ public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
+        private OnItemClickListener mListener;
         TextView tvInfo;
         ImageView ivInfo;
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
             tvInfo = (TextView) itemView.findViewById(R.id.recyclerText);
             ivInfo = (ImageView)itemView.findViewById(R.id.recyclerImage);
+            mListener = onItemClickListener;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null){
+                        mListener.setOnItemClickListener(view,getPosition());
+                    }
+                }
+            });
+
         }
     }
 }

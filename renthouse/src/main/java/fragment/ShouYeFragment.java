@@ -182,6 +182,14 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
                     loadMoreData();
                 }
             });
+
+            mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
+                @Override
+                public void setOnitemClickListener(View view, int position) {
+                    Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+
+                }
+            });
         }
     }
     //每次上拉加载的时候，给RecyclerView的后面添加了5条数据数据
@@ -239,6 +247,13 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
         int topBottom = 0;
         fourRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
 
+        mFourAdapter.setListener(new RecyclerFourAdapter.OnItemClickListener() {
+            @Override
+            public void setOnitemClickListener(View view, int position) {
+                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     //第三个RecyclerView
@@ -268,6 +283,12 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
         int topBottom = 0;
         threeRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
 
+        mThreeAdapter.setListener(new RecyclerThreeAdapter.OnItemClickListener() {
+            @Override
+            public void setOnItemClickListener(View view, int position) {
+                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //第二个RecyclerView
@@ -298,6 +319,13 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
         int leftRight = dip2px(10);
         int topBottom = 0;
         twoRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+
+        mTwoAdapter.setItemClickListener(new RecyclerTwoAdapter.OnItemClickListener() {
+            @Override
+            public void setOnItemClickListener(View view, int position) {
+                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //第一个RecyclerView
@@ -325,6 +353,12 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
         int topBottom = 0;
         gridRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
 
+       mOneAdapter.setItemClickListener(new RecyclerOneAdapter.OnItemClickListener() {
+           @Override
+           public void setOnItemClickListener(View view, int position) {
+               Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+           }
+       });
     }
 
     //初始书ViewPager轮播

@@ -21,7 +21,19 @@ import bean.FourAdapterInfo;
 public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapter.ViewHolder>{
 
     private List<FiveAdapterInfo> mDatas;
+    //定义一个接口
+    public interface OnItemClickListener{
+        void setOnitemClickListener(View view, int position);
+    }
 
+    //声明一个私有变量
+    private OnItemClickListener mItemClickListener;
+
+    //提供一个公共的方法 设置接口
+    public void setListener(OnItemClickListener onItemClickListener){
+        this.mItemClickListener = onItemClickListener;
+
+    }
     public RecyclerFiveAdapter(@NonNull List<FiveAdapterInfo> mDatas) {
         this.mDatas = mDatas;
     }
@@ -31,7 +43,7 @@ public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapte
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.five_recyclerview, null));
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.five_recyclerview, null),mItemClickListener);
     }
 
     @Override
@@ -54,7 +66,8 @@ public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10;
         ImageView ivInfo;
-        public ViewHolder(View itemView) {
+        private OnItemClickListener mListener;
+        public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
 
             tv1 = (TextView) itemView.findViewById(R.id.tv_1);
@@ -69,6 +82,16 @@ public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapte
             tv10 = (TextView) itemView.findViewById(R.id.tv_10);
 
             ivInfo = (ImageView)itemView.findViewById(R.id.iv_imageView);
+
+            this.mListener = onItemClickListener;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null){
+                        mListener.setOnitemClickListener(view,getPosition());
+                    }
+                }
+            });
         }
     }
 }
