@@ -1,4 +1,4 @@
-package adapter;
+package shouyeadapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,6 @@ import com.example.user.renthouse.R;
 import java.util.List;
 
 import bean.FiveAdapterInfo;
-import bean.FourAdapterInfo;
 
 /**
  * Created by user on 2019/7/22.

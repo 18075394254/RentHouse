@@ -1,9 +1,7 @@
-package adapter;
 
-import android.support.annotation.NonNull;
+package shouyeadapter;
+
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,57 +11,54 @@ import com.example.user.renthouse.R;
 
 import java.util.List;
 
-import bean.AdapterInfo;
+import bean.ThreeAdapterInfo;
 
 /**
  * 作者：请叫我百米冲刺 on 2016/12/6 下午1:33
  * 邮箱：mail@hezhilin.cc
  */
 
-public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.ViewHolder> {
+public class RecyclerThreeAdapter extends RecyclerView.Adapter<RecyclerThreeAdapter.ViewHolder> {
+
+    private List<ThreeAdapterInfo> mDatas;
 
     //定义一个接口
     public interface OnItemClickListener{
-        void setOnItemClickListener(View view,int postion);
+        void setOnItemClickListener(View view,int position);
     }
 
     //声明一个私有变量
-    private OnItemClickListener mItemClickListener;
+    private OnItemClickListener mOnItemClickListener;
 
     //提供一个公共的方法
-    public void setItemClickListener(OnItemClickListener mItemClickListener){
-        this.mItemClickListener = mItemClickListener;
+    public void setListener(OnItemClickListener mOnItemClickListener){
+            this.mOnItemClickListener = mOnItemClickListener;
     }
 
-
-    private List<AdapterInfo> mDatas;
-
-    public RecyclerOneAdapter(@NonNull List<AdapterInfo> mDatas) {
+    public RecyclerThreeAdapter( List<ThreeAdapterInfo> mDatas) {
         this.mDatas = mDatas;
-        for (int i= 0; i < mDatas.size();i++){
-            Log.i("one ",mDatas.get(i).toString());
-        }
-
     }
 
-    public List<AdapterInfo> getmDatas() {
-        return mDatas;
-    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyclerviedw, null),mItemClickListener);
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyclerviedw, null),mOnItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        AdapterInfo info = mDatas.get(position);
-        Log.i("one = ","mDatas.get(position) = "+mDatas.get(position).toString());
+        ThreeAdapterInfo info = mDatas.get(position);
 
-            holder.tvInfo.setText(info.message);
-            holder.ivInfo.setImageResource(info.img);
+
+        holder.tvInfoTitle.setText(info.title);
+
+         holder.ivInfo.setImageResource(R.mipmap.ic_launcher_round);
+        //Glide.with(MyApplication.getContext()).load(info.url).into(holder.ivInfo);
 
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -72,13 +67,15 @@ public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private OnItemClickListener mListener;
-        TextView tvInfo;
+        TextView tvInfoTitle;
         ImageView ivInfo;
-        public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
+        public ViewHolder(View itemView,OnItemClickListener itemClickListener) {
             super(itemView);
-            tvInfo = (TextView) itemView.findViewById(R.id.recyclerText);
+
+            tvInfoTitle = (TextView) itemView.findViewById(R.id.recyclerText);
             ivInfo = (ImageView)itemView.findViewById(R.id.recyclerImage);
-            mListener = onItemClickListener;
+
+            this.mListener = itemClickListener;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -87,7 +84,6 @@ public class RecyclerOneAdapter extends RecyclerView.Adapter<RecyclerOneAdapter.
                     }
                 }
             });
-
         }
     }
 }

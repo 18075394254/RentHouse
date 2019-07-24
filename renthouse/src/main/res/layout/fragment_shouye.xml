@@ -20,7 +20,7 @@
 <ScrollView
 
 
-    tools:context="fragment.ShouYeFragment"
+    tools:context="mainfragment.ShouYeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >

@@ -1,4 +1,4 @@
-package fragment;
+package wishfragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,16 +10,15 @@ import android.view.ViewGroup;
 import com.example.user.renthouse.R;
 
 /**
- * Created by user on 2019/7/16.
+ * Created by admin on 2019/7/23.
  */
 
-public class WishFragment extends Fragment {
-    private View mView;
+public class LookHouseFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_wish,container,false);
+        View mView = inflater.inflate(R.layout.lookhouse_fragment,container,false);
         return mView;
     }
 }

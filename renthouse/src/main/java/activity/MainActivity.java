@@ -1,16 +1,11 @@
 package activity;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.user.renthouse.R;
@@ -18,12 +13,12 @@ import com.example.user.renthouse.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.MyFragmentAdapter;
-import fragment.MeFragment;
-import fragment.ShouYeFragment;
-import fragment.TieFragment;
-import fragment.UpLoadFragment;
-import fragment.WishFragment;
+import shouyeadapter.MyFragmentAdapter;
+import mainfragment.MeFragment;
+import mainfragment.ShouYeFragment;
+import mainfragment.TieFragment;
+import mainfragment.UpLoadFragment;
+import mainfragment.WishFragment;
 
 public class MainActivity extends AppCompatActivity {
     public TabLayout mTabLayout;

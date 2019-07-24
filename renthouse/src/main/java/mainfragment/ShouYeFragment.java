@@ -1,7 +1,6 @@
-package fragment;
+package mainfragment;
 
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
@@ -32,11 +29,6 @@ import com.youth.banner.transformer.DefaultTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.RecyclerFiveAdapter;
-import adapter.RecyclerFourAdapter;
-import adapter.RecyclerOneAdapter;
-import adapter.RecyclerThreeAdapter;
-import adapter.RecyclerTwoAdapter;
 import application.MyApplication;
 import bean.AdapterInfo;
 import bean.FiveAdapterInfo;
@@ -46,9 +38,14 @@ import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
 import listener.EndLessOnScrollListener;
 import loader.GlideImageLoader;
+import shouyeadapter.RecyclerFiveAdapter;
+import shouyeadapter.RecyclerFourAdapter;
+import shouyeadapter.RecyclerOneAdapter;
+import shouyeadapter.RecyclerThreeAdapter;
+import shouyeadapter.RecyclerTwoAdapter;
 
 
-public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeRefreshLayout.OnRefreshListener{
+public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRefreshLayout.OnRefreshListener{
 
     private View mView;
     private SearchView mSearchView;
@@ -56,7 +53,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener ,SwipeR
     Banner banner;
     private GridView mGridView;
     String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","平台分类","免费看房"};
-    int[] imgs = new int[]{R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,R.drawable.six,R.drawable.seven,R.drawable.eight};
+    int[] imgs = new int[]{R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five, R.drawable.six, R.drawable.seven, R.drawable.eight};
     List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
 
     public static final int LINEAR_VERTICAL = 1;
