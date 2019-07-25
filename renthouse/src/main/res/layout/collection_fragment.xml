@@ -4,15 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/layout_swipe_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="500dp">
-        <android.support.v7.widget.RecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/collectionRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             />
-    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

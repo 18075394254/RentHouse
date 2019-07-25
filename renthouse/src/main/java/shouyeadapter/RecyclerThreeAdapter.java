@@ -53,7 +53,7 @@ public class RecyclerThreeAdapter extends RecyclerView.Adapter<RecyclerThreeAdap
 
         holder.tvInfoTitle.setText(info.title);
 
-         holder.ivInfo.setImageResource(R.mipmap.ic_launcher_round);
+         holder.ivInfo.setImageResource(R.mipmap.background);
         //Glide.with(MyApplication.getContext()).load(info.url).into(holder.ivInfo);
 
     }

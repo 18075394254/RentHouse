@@ -54,7 +54,7 @@ public class RecyclerFourAdapter extends RecyclerView.Adapter<RecyclerFourAdapte
         holder.tvInfoPrice.setText(info.price);
         holder.tvInfoSize.setText(info.size);
 
-          holder.ivInfo.setImageResource(R.mipmap.ic_launcher_round);
+          holder.ivInfo.setImageResource(R.mipmap.background);
         //Glide.with(MyApplication.getContext()).load(info.url).into(holder.ivInfo);
 
     }

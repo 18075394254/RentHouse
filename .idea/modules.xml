@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/RentHouse.iml" filepath="$PROJECT_DIR$/RentHouse.iml" />
       <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
       <module fileurl="file://$PROJECT_DIR$/renthouse/renthouse.iml" filepath="$PROJECT_DIR$/renthouse/renthouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" filepath="$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" />
     </modules>
   </component>
 </project>

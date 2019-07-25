@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFE0"
+        android:layout_marginBottom="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="房东名称:"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_landlord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:text="房东"
+                    android:textColor="@color/cardview_dark_background"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预约看房时间:"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:text="2019-7-25 周四 17:00"
+                    android:textColor="@color/cardview_dark_background"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/background"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_1"
+                            style="@style/MyCustomTabLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_gravity="center_horizontal"
+                            android:text="蟠龙欣苑"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="20sp"
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tv_2"
+                            style="@style/MyCustomTabLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingLeft="5dp"
+                            android:text="2400元/月"
+                            android:textColor="@color/colorRed"
+                            android:textSize="15sp"
+
+                            />
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="horizontal"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_3"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:text="月付"
+                            android:textColor="@color/tab_textColorSelect"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_4"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:text="独卫"
+                            android:textColor="@color/tab_textColorSelect"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_5"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:text="电梯房"
+                            android:textColor="@color/tab_textColorSelect"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="horizontal"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="合租 | "
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_7"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:gravity="center"
+                            android:text="朝南 | "
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="次卧 | "
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="25M² "
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingLeft="5dp"
+                        android:text="地址：xxxxxxxxxxxxxxx "
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

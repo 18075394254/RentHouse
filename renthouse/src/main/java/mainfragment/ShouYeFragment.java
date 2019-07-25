@@ -2,13 +2,16 @@ package mainfragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.renthouse.R;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -33,6 +38,7 @@ import application.MyApplication;
 import bean.AdapterInfo;
 import bean.FiveAdapterInfo;
 import bean.FourAdapterInfo;
+import bean.FiveAdapterInfo;
 import bean.ThreeAdapterInfo;
 import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
@@ -43,13 +49,15 @@ import shouyeadapter.RecyclerFourAdapter;
 import shouyeadapter.RecyclerOneAdapter;
 import shouyeadapter.RecyclerThreeAdapter;
 import shouyeadapter.RecyclerTwoAdapter;
+import utils.MyNestedScrollView;
 
 
-public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRefreshLayout.OnRefreshListener{
+public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     private View mView;
     private SearchView mSearchView;
     LinearLayout cityLin,messageLin;
+    private MyNestedScrollView nestedSV;
     Banner banner;
     private GridView mGridView;
     String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","平台分类","免费看房"};
@@ -65,7 +73,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRe
 
     private int type;
 
-    private RecyclerView gridRecyclerView,twoRecyclerView,threeRecyclerView,fourRecyclerView,fiveRecyclerView;
+    private RecyclerView gridRecyclerView,twoRecyclerView,threeRecyclerView,fourRecyclerView;
+    private XRecyclerView fiveRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerOneAdapter mOneAdapter;
     private RecyclerTwoAdapter mTwoAdapter;
@@ -76,7 +85,9 @@ public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRe
 
     LinearLayout searchRootView;
 
-    private SwipeRefreshLayout mRefreshLayout;
+    private int refreshTime = 0;
+    private int times = 0;
+
     private LinearLayoutManager mLinearLayoutManager;
 
     public void initData(){
@@ -125,16 +136,35 @@ public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRe
         //初始化第五个RecyclerView
         initFiveRecyclerView();
 
+        //防止ScrollView与RecyclerView滑动冲突
+        avoidSlideError();
+
+
         return mView;
     }
+    //防止ScrollView与RecyclerView滑动冲突
+    private void avoidSlideError() {
+        gridRecyclerView.setNestedScrollingEnabled(false);
+        twoRecyclerView.setNestedScrollingEnabled(false);
+        threeRecyclerView.setNestedScrollingEnabled(false);
+        fourRecyclerView.setNestedScrollingEnabled(false);
+        fiveRecyclerView.setNestedScrollingEnabled(false);
+    }
+
     //第五个RecyclerView
     private void initFiveRecyclerView() {
         {
-            mRefreshLayout = (SwipeRefreshLayout)mView.findViewById(R.id.layout_swipe_refresh);
-            fiveRecyclerView = (RecyclerView) mView.findViewById(R.id.fiveRecyclerView);
-            //设置每行的列数
-            //mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
-            //添加数据
+
+            fiveRecyclerView = mView.findViewById(R.id.fiveRecyclerView);
+            nestedSV = mView.findViewById(R.id.nestedSV);
+            fiveRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+            fiveRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
+            fiveRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
+
+            fiveRecyclerView
+                    .getDefaultRefreshHeaderView()
+                    .setRefreshTimeVisible(true);
+             //添加数据
              fiveInfos = new ArrayList<>();
             FiveAdapterInfo info = null;
             for (int i = 0; i < 10; i++) {
@@ -147,38 +177,20 @@ public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRe
             mFiveAdapter = new RecyclerFiveAdapter(fiveInfos);
             fiveRecyclerView.setAdapter(mFiveAdapter);
 
-            mLinearLayoutManager = new LinearLayoutManager(getActivity());
-            fiveRecyclerView.setLayoutManager(mLinearLayoutManager);
-            //监听SwipeRefreshLayout.OnRefreshListener
-            mRefreshLayout.setOnRefreshListener(this);
 
-            /**
-             * 监听addOnScrollListener这个方法，新建我们的EndLessOnScrollListener
-             * 在onLoadMore方法中去完成上拉加载的操作
-             * */
-            fiveRecyclerView.addOnScrollListener(new EndLessOnScrollListener(mLinearLayoutManager) {
+            mLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
                 @Override
-                public void onLoadMore(int currentPage) {
-                    loadMoreData();
+                public boolean canScrollVertically() {
+                    return false;
                 }
-            });
-            //这个是下拉刷新出现的那个圈圈要显示的颜色
-            mRefreshLayout.setColorSchemeResources(
-                    R.color.colorRed,
-                    R.color.colorYellow,
-                    R.color.colorGreen
-            );
+            };
+
+            fiveRecyclerView.setLayoutManager(mLinearLayoutManager);
 
             //添加ItemDecoration，item之间的间隔
             int leftRight = dip2px(15);
             int topBottom = 0;
             fiveRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
-            fiveRecyclerView.addOnScrollListener(new EndLessOnScrollListener(new LinearLayoutManager(getActivity())) {
-                @Override
-                public void onLoadMore(int currentPage) {
-                    loadMoreData();
-                }
-            });
 
             mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
                 @Override
@@ -187,32 +199,63 @@ public class ShouYeFragment extends Fragment implements OnBannerListener,SwipeRe
 
                 }
             });
-        }
-    }
-    //每次上拉加载的时候，给RecyclerView的后面添加了5条数据数据
-    private void loadMoreData(){
-        for (int i =0; i < 5; i++){
-            fiveInfos.add(new FiveAdapterInfo());
-            mFiveAdapter.notifyDataSetChanged();
+
+            // When the item number of the screen number is list.size-2,we call the onLoadMore
+          //  fiveRecyclerView.setLimitNumberToCallLoadMore(2);
+            final int itemLimit = 2;
+            fiveRecyclerView.setPullRefreshEnabled(false);
+            fiveRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+                @Override
+                public void onRefresh() {
+                            //refresh data here
+                   // fiveRecyclerView.refreshComplete();
+                }
+
+                @Override
+                public void onLoadMore() {
+                    Log.e("aaaaa","call onLoadMore");
+                    if(times < 2){
+                        new Handler().postDelayed(new Runnable(){
+                            public void run() {
+                                for(int i = 0; i < itemLimit ;i++){
+                                    fiveInfos.add(new FiveAdapterInfo());
+                                }
+                                if(fiveRecyclerView != null) {
+                                    fiveRecyclerView.loadMoreComplete();
+                                    mFiveAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        }, 1000);
+                    } else {
+                        new Handler().postDelayed(new Runnable() {
+                            public void run() {
+                                for(int i = 0; i < itemLimit ;i++){
+                                    fiveInfos.add(new FiveAdapterInfo());
+                                }
+                                if(fiveRecyclerView != null) {
+                                    fiveRecyclerView.setNoMore(true);
+                                    mFiveAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        }, 1000);
+                    }
+                    times ++;
+                }
+            });
+            nestedSV.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+         @Override
+        public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            //判断是否滑到的底部
+            if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                    Toast.makeText(getActivity(),"滑动到底了，需要加载数据",Toast.LENGTH_SHORT).show();
+             }
+            }
+        });
+
+            
         }
     }
 
-    /**
-     * 重写SwipeRefreshLayout.OnRefreshListener的OnRefresh方法
-     * 在这里面去做下拉刷新的操作
-     */
-    @Override
-    public void onRefresh() {
-        updateData();
-        //数据重新加载完成后，提示数据发生改变，并且设置现在不在刷新
-        mFiveAdapter.notifyDataSetChanged();
-        mRefreshLayout.setRefreshing(false);
-    }
-
-    private void updateData(){
-        //我在List最前面加入一条数据
-        fiveInfos.add(new FiveAdapterInfo());
-    }
     //第四个RecyclerView
     private void initFourRecyclerView() {
         fourRecyclerView = (RecyclerView) mView.findViewById(R.id.fourRecyclerView);

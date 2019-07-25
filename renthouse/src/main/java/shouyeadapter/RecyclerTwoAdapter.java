@@ -50,7 +50,7 @@ public class RecyclerTwoAdapter extends RecyclerView.Adapter<RecyclerTwoAdapter.
 
         holder.tvInfoTitle.setText(info.title);
         holder.tvInfoMiaoshu.setText(info.miaoshu);
-        holder.ivInfo.setImageResource(R.mipmap.ic_launcher_round);
+        holder.ivInfo.setImageResource(R.mipmap.background);
         //Glide.with(MyApplication.getContext()).load(info.url).into(holder.ivInfo);
 
     }

@@ -1,11 +1,13 @@
 package wishfragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.user.renthouse.R;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.CollectionAdapterInfo;
 import bean.CollectionAdapterInfo;
 import decoration.SpacesItemDecoration;
 import listener.EndLessOnScrollListener;
@@ -26,15 +31,16 @@ import wishadapter.CollectionRecyclerAdapter;
  * Created by admin on 2019/7/23.
  */
 
-public class CollectionFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class CollectionFragment extends Fragment {
     private View mView;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private CollectionRecyclerAdapter mCollectionAdapter;
-    List<CollectionAdapterInfo> fiveInfos;
-    private RecyclerView collectionRecyclerView;
+    List<CollectionAdapterInfo> collectionInfos;
+    private XRecyclerView collectionRecyclerView;
 
-    private SwipeRefreshLayout mRefreshLayout;
+    private int refreshTime = 0;
+    private int times = 0;
     private LinearLayoutManager mLinearLayoutManager;
     @Nullable
     @Override
@@ -42,61 +48,42 @@ public class CollectionFragment extends Fragment implements SwipeRefreshLayout.O
          mView = inflater.inflate(R.layout.collection_fragment,container,false);
 
         //初始化RecyclerView
-        initFiveRecyclerView();
+        initRecyclerView();
         return mView;
     }
 
-    //第五个RecyclerView
-    private void initFiveRecyclerView() {
+    //初始化RecyclerView
+    private void initRecyclerView() {
         {
-            mRefreshLayout = (SwipeRefreshLayout)mView.findViewById(R.id.layout_swipe_refresh);
-            collectionRecyclerView = (RecyclerView) mView.findViewById(R.id.collectionRecyclerView);
 
+            collectionRecyclerView =  mView.findViewById(R.id.collectionRecyclerView);
+            collectionRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+            collectionRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
+            collectionRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
+
+            collectionRecyclerView
+                    .getDefaultRefreshHeaderView()
+                    .setRefreshTimeVisible(true);
             //添加数据
-            fiveInfos = new ArrayList<>();
-            CollectionAdapterInfo info = null;
-            for (int i = 0; i < 5; i++) {
+            collectionInfos = new ArrayList<>();
+            /*CollectionAdapterInfo info = null;
+            for (int i = 0; i < 2; i++) {
                 info = new CollectionAdapterInfo();
                 // info.url = urls[i];
-                fiveInfos.add(info);
-            }
+                collectionInfos.add(info);
+            }*/
 
             //设置adapter的数据
-            mCollectionAdapter = new CollectionRecyclerAdapter(fiveInfos);
+            mCollectionAdapter = new CollectionRecyclerAdapter(collectionInfos);
             collectionRecyclerView.setAdapter(mCollectionAdapter);
 
             mLinearLayoutManager = new LinearLayoutManager(getActivity());
             collectionRecyclerView.setLayoutManager(mLinearLayoutManager);
-            //监听SwipeRefreshLayout.OnRefreshListener
-            mRefreshLayout.setOnRefreshListener(this);
-
-            /**
-             * 监听addOnScrollListener这个方法，新建我们的EndLessOnScrollListener
-             * 在onLoadMore方法中去完成上拉加载的操作
-             * */
-            collectionRecyclerView.addOnScrollListener(new EndLessOnScrollListener(mLinearLayoutManager) {
-                @Override
-                public void onLoadMore(int currentPage) {
-                    loadMoreData();
-                }
-            });
-            //这个是下拉刷新出现的那个圈圈要显示的颜色
-            mRefreshLayout.setColorSchemeResources(
-                    R.color.colorRed,
-                    R.color.colorYellow,
-                    R.color.colorGreen
-            );
 
             //添加ItemDecoration，item之间的间隔
             int leftRight = dip2px(15);
             int topBottom = 0;
             collectionRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
-            collectionRecyclerView.addOnScrollListener(new EndLessOnScrollListener(new LinearLayoutManager(getActivity())) {
-                @Override
-                public void onLoadMore(int currentPage) {
-                    loadMoreData();
-                }
-            });
 
             mCollectionAdapter.setListener(new CollectionRecyclerAdapter.OnItemClickListener() {
                 @Override
@@ -105,25 +92,68 @@ public class CollectionFragment extends Fragment implements SwipeRefreshLayout.O
 
                 }
             });
-        }
-    }
-    //每次上拉加载的时候，给RecyclerView的后面添加了5条数据数据
-    private void loadMoreData(){
-        for (int i =0; i < 5; i++){
-            fiveInfos.add(new CollectionAdapterInfo());
-            mCollectionAdapter.notifyDataSetChanged();
+
+            final int itemLimit = 2;
+
+            // When the item number of the screen number is list.size-2,we call the onLoadMore
+            collectionRecyclerView.setLimitNumberToCallLoadMore(2);
+
+            collectionRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+                @Override
+                public void onRefresh() {
+                    refreshTime ++;
+                    times = 0;
+                    new Handler().postDelayed(new Runnable(){
+                        public void run() {
+                           // collectionInfos.clear();
+                            for(int i = 0; i < itemLimit ;i++){
+                                collectionInfos.add(new CollectionAdapterInfo());
+                            }
+                            mCollectionAdapter.notifyDataSetChanged();
+                            if(collectionRecyclerView != null)
+                                collectionRecyclerView.refreshComplete();
+                        }
+
+                    }, 1000);            //refresh data here
+                }
+
+                @Override
+                public void onLoadMore() {
+                    Log.e("aaaaa","call onLoadMore");
+                    if(times < 2){
+                        new Handler().postDelayed(new Runnable(){
+                            public void run() {
+                                for(int i = 0; i < itemLimit ;i++){
+                                    collectionInfos.add(new CollectionAdapterInfo());
+                                }
+                                if(collectionRecyclerView != null) {
+                                    collectionRecyclerView.loadMoreComplete();
+                                    mCollectionAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        }, 1000);
+                    } else {
+                        new Handler().postDelayed(new Runnable() {
+                            public void run() {
+                                for(int i = 0; i < itemLimit ;i++){
+                                    collectionInfos.add(new CollectionAdapterInfo());
+                                }
+                                if(collectionRecyclerView != null) {
+                                    collectionRecyclerView.setNoMore(true);
+                                    mCollectionAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        }, 1000);
+                    }
+                    times ++;
+                }
+            });
+
+
+            collectionRecyclerView.refresh();
         }
     }
 
-    @Override
-    public void onRefresh() {
-        for (int i =0; i <2; i++){
-            fiveInfos.add(new CollectionAdapterInfo());
-
-        }
-        mCollectionAdapter.notifyDataSetChanged();
-        mRefreshLayout.setRefreshing(false);
-    }
 
     public int dip2px(float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, getResources().getDisplayMetrics());
