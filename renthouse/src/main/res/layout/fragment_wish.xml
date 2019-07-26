@@ -12,7 +12,8 @@
         android:text="心愿单"
         android:textSize="20sp"
         android:gravity="center"
-
+        android:background="@color/tab_textColorSelect"
+        android:textColor="@color/White"
         />
     <ImageView
         android:layout_width="match_parent"

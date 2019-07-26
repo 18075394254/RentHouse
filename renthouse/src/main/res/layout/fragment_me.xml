@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <TextView
+        android:id="@+id/shouyeText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我的界面"
+        android:layout_height="40dp"
+        android:text="心愿单"
         android:textSize="20sp"
+        android:gravity="center"
+        android:background="@color/tab_textColorSelect"
+        android:textColor="@color/White"
         />
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon"
+            android:layout_marginLeft="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="那小子真帅wp"
+                android:textSize="20sp"
+                android:textColor="@color/tab_textColor"
+                />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:background="@color/palegreen"
+                android:text="积分：1000"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/White"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:layout_below="@+id/tv_name"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gotome"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/imageBackground"
+        />
+</LinearLayout>
