@@ -41,6 +41,7 @@ public class UpLoadFragment extends Fragment {
         mView.setFocusableInTouchMode(true);
         mView.setOnKeyListener(backlistener);
         Toast.makeText(getActivity(),"是否可返回 = "+mWebView.canGoBack(),Toast.LENGTH_SHORT).show();
+
         return mView;
     }
 
