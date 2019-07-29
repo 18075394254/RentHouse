@@ -32,17 +32,34 @@ public class UpLoadFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_upload,container,false);
         mWebView = mView.findViewById(R.id.webview);
-        backInterface = (IBackInterface)getActivity();
-        backInterface.setSelectedFragment(this);//将fragment传递到Activity中
+
         url = "file:///android_asset/attestation1/index.html";
 
         loadLocalHtml(url);
 
-
-
+        mView.setFocusable(true);//这个和下面的这个命令必须要设置了，才能监听back事件。
+        mView.setFocusableInTouchMode(true);
+        mView.setOnKeyListener(backlistener);
+        Toast.makeText(getActivity(),"是否可返回 = "+mWebView.canGoBack(),Toast.LENGTH_SHORT).show();
         return mView;
     }
 
+    private View.OnKeyListener backlistener = new View.OnKeyListener() {
+        @Override
+        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+            if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                if (i == KeyEvent.KEYCODE_BACK) { //表示按返回键 时的操作
+                    Toast.makeText(getActivity(),"是否可返回 = "+mWebView.canGoBack(),Toast.LENGTH_SHORT).show();
+                    if (mWebView.canGoBack()) {
+                        mWebView.goBack();//返回上一页面
+
+                    }
+
+                }
+            }
+            return false;
+        }
+    };
 
     /**
      * 用于返回是否需要实现监听
