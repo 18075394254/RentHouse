@@ -10,7 +10,7 @@
    <android.support.v4.view.ViewPager
        android:layout_width="match_parent"
        android:layout_height="0dp"
-       android:id="@+id/viewpager"
+       android:id="@+id/main_viewpager"
        android:layout_weight="1"/>
 
    <ImageView
@@ -21,7 +21,7 @@
    <android.support.design.widget.TabLayout
        android:layout_width="match_parent"
        android:layout_height="80dp"
-       android:id="@+id/tablayout"
+       android:id="@+id/main_tablayout"
        app:tabBackground="@color/tab_background"
        style="@style/MyCustomTabLayout" />
 

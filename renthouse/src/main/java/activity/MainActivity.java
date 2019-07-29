@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.user.renthouse.R;
@@ -13,6 +14,8 @@ import com.example.user.renthouse.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.MyApplication;
+import myinterface.IBackInterface;
 import shouyeadapter.MyFragmentAdapter;
 import mainfragment.MeFragment;
 import mainfragment.ShouYeFragment;
@@ -23,32 +26,36 @@ import mainfragment.WishFragment;
 public class MainActivity extends AppCompatActivity {
     public TabLayout mTabLayout;
     ViewPager mViewPager;
+    private Fragment fragment; //用于传递监听back键的fragment
     String[] tab_titles = new String[]{"首页","心愿单","发布","求租贴","我的"};
     int[] tab_imgs = new int[]{R.drawable.tab_shouye,R.drawable.tab_wish,R.drawable.tab_upload,
     R.drawable.tab_tie,R.drawable.tab_me};
     List<Fragment> mFragments = new ArrayList<>();
+    UpLoadFragment upLoadFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         //v7包下去除标题栏代码：
         getSupportActionBar().hide();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        MyApplication.setWindowStatusBarColor(MainActivity.this,R.color.tab_textColorSelect);
         setContentView(R.layout.activity_main);
 
-        mTabLayout = (TabLayout) findViewById(R.id.tablayout);
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mTabLayout = (TabLayout) findViewById(R.id.main_tablayout);
+        mViewPager = (ViewPager) findViewById(R.id.main_viewpager);
 
         //添加Fragment到list中
+        upLoadFragment = new UpLoadFragment();
         mFragments.add(new ShouYeFragment());
         mFragments.add(new WishFragment());
-        mFragments.add(new UpLoadFragment());
+        mFragments.add(upLoadFragment);
         mFragments.add(new TieFragment());
         mFragments.add(new MeFragment());
 
         initView();
     }
+
     /**
      * 初始化各控件
      */
@@ -133,5 +140,8 @@ public class MainActivity extends AppCompatActivity {
             tab.setIcon(d);
         }
     }
+
+
+
 
 }

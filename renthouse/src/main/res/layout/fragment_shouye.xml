@@ -8,7 +8,7 @@
     android:id="@+id/rootView"
     >
     <TextView
-        android:id="@+id/shouyeText"
+        android:id="@+id/shouye_Text"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="首页"
@@ -20,7 +20,7 @@
 
 <utils.MyNestedScrollView
 
-    android:id="@+id/nestedSV"
+    android:id="@+id/shouye_nestedSV"
     tools:context="mainfragment.ShouYeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,15 +34,15 @@
 
 
 <LinearLayout
-    android:id="@+id/searchLin"
+    android:id="@+id/shouye_searchLin"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
     android:background="@color/tab_textColorSelect"
-    android:layout_below="@+id/shouyeText"
+    android:layout_below="@+id/shouye_Text"
     android:weightSum="9">
     <LinearLayout
-        android:id="@+id/cityLin"
+        android:id="@+id/shouye_cityLin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -51,7 +51,7 @@
         android:focusableInTouchMode="true"
         >
         <TextView
-            android:id="@+id/city_Tv"
+            android:id="@+id/shouye_city_Tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上海"
@@ -61,14 +61,14 @@
             android:layout_marginLeft="10dp"
             />
         <ImageView
-            android:id="@+id/cityName"
+            android:id="@+id/shouye_cityName"
             android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:src="@drawable/downarrow"
             android:layout_weight="0.80"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/searchRootView"
+        android:id="@+id/shouye_searchRootView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="9.07"
@@ -76,7 +76,7 @@
         android:layout_marginBottom="5dp"
         >
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/shouye_searchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/searchviewshape"
@@ -88,7 +88,7 @@
         </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/messageLin"
+        android:id="@+id/shouye_messageLin"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -113,7 +113,7 @@
     </LinearLayout>
 </LinearLayout>
     <com.youth.banner.Banner
-        android:id="@+id/banner"
+        android:id="@+id/shouye_banner"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
@@ -124,7 +124,7 @@
         />
 
 <android.support.v7.widget.RecyclerView
-    android:id="@+id/gidRecyclerView"
+    android:id="@+id/shouye_gidRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
@@ -151,7 +151,7 @@
         android:textColor="#000000"
         />
     <TextView
-        android:id="@+id/moreText"
+        android:id="@+id/shouye_moreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
@@ -161,7 +161,7 @@
         />
 </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-    android:id="@+id/twoRecyclerView"
+    android:id="@+id/shouye_twoRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
@@ -185,7 +185,7 @@
         android:text="特色推荐"
         />
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/threeRecyclerView"
+        android:id="@+id/shouye_threeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -210,7 +210,7 @@
             android:textColor="#000000"
             />
         <TextView
-            android:id="@+id/more2Text"
+            android:id="@+id/shouye_more2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -220,7 +220,7 @@
             />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/fourRecyclerView"
+        android:id="@+id/shouye_fourRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -266,7 +266,7 @@
         android:text="猜你喜欢"
         />
     <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/fiveRecyclerView"
+        android:id="@+id/shouye_fiveRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

@@ -155,8 +155,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private void initFiveRecyclerView() {
         {
 
-            fiveRecyclerView = mView.findViewById(R.id.fiveRecyclerView);
-            nestedSV = mView.findViewById(R.id.nestedSV);
+            fiveRecyclerView = mView.findViewById(R.id.shouye_fiveRecyclerView);
+            nestedSV = mView.findViewById(R.id.shouye_nestedSV);
             fiveRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
             fiveRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
             fiveRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
@@ -259,7 +259,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //第四个RecyclerView
     private void initFourRecyclerView() {
-        fourRecyclerView = (RecyclerView) mView.findViewById(R.id.fourRecyclerView);
+        fourRecyclerView = (RecyclerView) mView.findViewById(R.id.shouye_fourRecyclerView);
         //设置每行的列数
         mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         //添加数据
@@ -299,7 +299,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //第三个RecyclerView
     private void initThreeRecyclerView() {
-        threeRecyclerView = (RecyclerView) mView.findViewById(R.id.threeRecyclerView);
+        threeRecyclerView = (RecyclerView) mView.findViewById(R.id.shouye_threeRecyclerView);
         //设置每行的列数
         mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         //添加数据
@@ -334,7 +334,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //第二个RecyclerView
     private void initTwoRecyclerView() {
-        twoRecyclerView= mView.findViewById(R.id.twoRecyclerView);
+        twoRecyclerView= mView.findViewById(R.id.shouye_twoRecyclerView);
         //设置每行的列数
         mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         //添加数据
@@ -371,7 +371,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //第一个RecyclerView
     private void initOneRecyclerView() {
-        gridRecyclerView = (RecyclerView) mView.findViewById(R.id.gidRecyclerView);
+        gridRecyclerView = (RecyclerView) mView.findViewById(R.id.shouye_gidRecyclerView);
         //设置每行的列数
         mLayoutManager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
         //添加数据
@@ -404,7 +404,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //初始书ViewPager轮播
     private void initBanner() {
-        banner = mView.findViewById(R.id.banner);
+        banner = mView.findViewById(R.id.shouye_banner);
         banner.setImages(MyApplication.images)
                 .setImageLoader(new GlideImageLoader())
                 .setOnBannerListener(this)
@@ -415,14 +415,14 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //初始化标题栏上城市名和消息两个LinearLayout布局
     private void initLayout() {
-        cityLin = mView.findViewById(R.id.cityLin);
-        messageLin = mView.findViewById(R.id.messageLin);
+        cityLin = mView.findViewById(R.id.shouye_cityLin);
+        messageLin = mView.findViewById(R.id.shouye_messageLin);
     }
 
     //初始化SearchView
     private void initSearchView() {
-        searchRootView = mView.findViewById(R.id.searchRootView);
-        mSearchView = mView.findViewById(R.id.searchView);
+        searchRootView = mView.findViewById(R.id.shouye_searchRootView);
+        mSearchView = mView.findViewById(R.id.shouye_searchView);
         mSearchView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

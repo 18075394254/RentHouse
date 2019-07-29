@@ -7,7 +7,7 @@
         android:id="@+id/shouyeText"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="心愿单"
+        android:text="个人中心"
         android:textSize="20sp"
         android:gravity="center"
         android:background="@color/tab_textColorSelect"
@@ -16,7 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         >
         <ImageView
@@ -30,13 +30,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             >
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="那小子真帅wp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/tab_textColor"
                 />
             <TextView
@@ -62,9 +63,28 @@
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/imageBackground"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/me_recyclerview_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/imageBackground"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/me_recyclerview_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         />
 </LinearLayout>
