@@ -33,22 +33,22 @@
              >
 
 
-<LinearLayout
+<RelativeLayout
     android:id="@+id/shouye_searchLin"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:orientation="horizontal"
+
     android:background="@color/tab_textColorSelect"
     android:layout_below="@+id/shouye_Text"
-    android:weightSum="9">
+    >
     <LinearLayout
         android:id="@+id/shouye_cityLin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="1"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:layout_alignParentLeft="true"
         >
         <TextView
             android:id="@+id/shouye_city_Tv"
@@ -65,27 +65,22 @@
             android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:src="@drawable/downarrow"
-            android:layout_weight="0.80"/>
+            />
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/shouye_searchRootView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="9.07"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        >
-    <SearchView
+    <TextView
         android:id="@+id/shouye_searchView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/searchviewshape"
-        android:iconifiedByDefault="false"
-        android:queryBackground="@null"
-        android:queryHint="输入地址区域名字搜索"
-
+        android:drawableLeft="@mipmap/leftgoback"
+        android:hint="清输入区域地址后搜索"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"
+        android:layout_toRightOf="@+id/shouye_cityLin"
+        android:layout_toLeftOf="@+id/shouye_messageLin"
         />
-        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/shouye_messageLin"
@@ -93,6 +88,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:layout_alignParentRight="true"
         >
 
         <ImageView
@@ -111,7 +107,9 @@
             />
 
     </LinearLayout>
-</LinearLayout>
+
+
+</RelativeLayout>
     <com.youth.banner.Banner
         android:id="@+id/shouye_banner"
         android:layout_width="match_parent"

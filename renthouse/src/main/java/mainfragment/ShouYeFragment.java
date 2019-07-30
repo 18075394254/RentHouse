@@ -1,5 +1,6 @@
 package mainfragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ import com.youth.banner.transformer.DefaultTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.SearchActivity;
 import application.MyApplication;
 import bean.AdapterInfo;
 import bean.FiveAdapterInfo;
@@ -55,7 +57,9 @@ import utils.MyNestedScrollView;
 public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     private View mView;
-    private SearchView mSearchView;
+    //private SearchView mSearchView;
+    private TextView mSearchView;
+
     LinearLayout cityLin,messageLin;
     private MyNestedScrollView nestedSV;
     Banner banner;
@@ -421,29 +425,15 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
     //初始化SearchView
     private void initSearchView() {
-        searchRootView = mView.findViewById(R.id.shouye_searchRootView);
+       // searchRootView = mView.findViewById(R.id.shouye_searchRootView);
         mSearchView = mView.findViewById(R.id.shouye_searchView);
-        mSearchView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-               // Toast.makeText(getActivity(),"搜索框点击了",Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-        //设置输入字体颜色
-        if(mSearchView == null) { return;}
-        int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView textView = (TextView) mSearchView.findViewById(id);
-        //textView.setTextColor(Color.RED);//字体颜色
-        textView.setTextSize(15);//字体、提示字体大小
-        textView.setHintTextColor(Color.GRAY);//提示字体颜色
-        searchRootView.setOnClickListener(new View.OnClickListener() {
+        mSearchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"搜索框点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), SearchActivity.class));
             }
         });
-        mSearchView.setEnabled(false);
+
     }
 
     @Override
@@ -470,11 +460,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     public void onResume() {
         super.onResume();
 
-        searchRootView.setFocusable(true);
 
-        searchRootView.setFocusableInTouchMode(true);
-
-        searchRootView.requestFocus();
     }
 
     public int dip2px(float dpValue) {

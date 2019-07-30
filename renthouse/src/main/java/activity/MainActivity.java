@@ -1,5 +1,8 @@
 package activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
 
 import com.example.user.renthouse.R;
 
@@ -23,7 +27,7 @@ import mainfragment.TieFragment;
 import mainfragment.UpLoadFragment;
 import mainfragment.WishFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IBackInterface{
     public TabLayout mTabLayout;
     ViewPager mViewPager;
     private Fragment fragment; //用于传递监听back键的fragment
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     R.drawable.tab_tie,R.drawable.tab_me};
     List<Fragment> mFragments = new ArrayList<>();
     UpLoadFragment upLoadFragment;
+    TieFragment tieFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
         //添加Fragment到list中
         upLoadFragment = new UpLoadFragment();
+        tieFragment = new TieFragment();
         mFragments.add(new ShouYeFragment());
         mFragments.add(new WishFragment());
         mFragments.add(upLoadFragment);
-        mFragments.add(new TieFragment());
+        mFragments.add(tieFragment);
         mFragments.add(new MeFragment());
 
         initView();
@@ -142,6 +148,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void setSelectedFragment(Fragment fragment) {
+        this.fragment = fragment;
+    }
 
+    @Override
+    public void onBackPressed() {
+        /*if (fragment != null && ((UpLoadFragment) fragment).onBackPressed()) {
+            //实现具体的点击效果
+            ((UpLoadFragment) fragment).onGoBack();
+        }else */if(fragment != null && ((TieFragment) fragment).onBackPressed()){
+            ((TieFragment) fragment).onGoBack();
+        } else {
+            Dialog alertDialog = new AlertDialog.Builder(this).
+                    setTitle("确定要退出程序吗？").
+                    setIcon(R.mipmap.log).
+                    setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(0);
+                        }
+                    }).
+                    setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                        }
+                    }).
+                    create();
+            alertDialog.show();
+        }
+    }
 }
