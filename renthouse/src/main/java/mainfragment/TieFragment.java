@@ -37,7 +37,7 @@ public class TieFragment extends LazyFragment {
         mView = inflater.inflate(R.layout.fragment_tie,container,false);
         mWebView = mView.findViewById(R.id.webview);
         backInterface = (IBackInterface)getActivity();
-        backInterface.setSelectedFragment(this);//将fragment传递到Activity中
+        backInterface.setSelectedTieFragment(this);//将fragment传递到Activity中
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -83,7 +83,6 @@ public class TieFragment extends LazyFragment {
      * 用于返回是否需要实现监听
      */
     public boolean onBackPressed() {
-        Toast.makeText(getActivity(),"cangoback = "+mWebView.canGoBack(),Toast.LENGTH_SHORT).show();
         if(mWebView.canGoBack()) {
             return true;//监听back键，用于处理自己的点击事件
         }

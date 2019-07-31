@@ -67,6 +67,7 @@
             android:src="@drawable/downarrow"
             />
     </LinearLayout>
+    <!--android:drawableLeft="@mipmap/leftgoback"-->
     <TextView
         android:id="@+id/shouye_searchView"
         android:layout_width="match_parent"
@@ -74,10 +75,9 @@
        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/searchviewshape"
-        android:drawableLeft="@mipmap/leftgoback"
-        android:hint="清输入区域地址后搜索"
+        android:hint="请输入区域地址后搜索"
+        android:gravity="center"
         android:textSize="18sp"
-        android:paddingBottom="8dp"
         android:layout_toRightOf="@+id/shouye_cityLin"
         android:layout_toLeftOf="@+id/shouye_messageLin"
         />

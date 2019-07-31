@@ -35,8 +35,8 @@ public class UpLoadFragment extends LazyFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_upload,container,false);
         mWebView = mView.findViewById(R.id.webview);
-        //backInterface = (IBackInterface)getActivity();
-        //backInterface.setSelectedFragment(this);//将fragment传递到Activity中
+        backInterface = (IBackInterface)getActivity();
+        backInterface.setSelectedUploadFragment(this);//将fragment传递到Activity中
     // 设置WebView的客户端
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
@@ -57,7 +57,6 @@ public class UpLoadFragment extends LazyFragment {
      * 用于返回是否需要实现监听
      */
     public boolean onBackPressed() {
-        Toast.makeText(getActivity(),"cangoback = "+mWebView.canGoBack(),Toast.LENGTH_SHORT).show();
         if(mWebView.canGoBack()) {
             return true;//监听back键，用于处理自己的点击事件
         }

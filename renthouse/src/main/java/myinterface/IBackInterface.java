@@ -7,5 +7,6 @@ import android.support.v4.app.Fragment;
  */
 
 public interface IBackInterface {
-    void setSelectedFragment(Fragment fragment);
+    void setSelectedUploadFragment(Fragment fragment);
+    void setSelectedTieFragment(Fragment fragment);
 }

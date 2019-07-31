@@ -30,7 +30,8 @@ import mainfragment.WishFragment;
 public class MainActivity extends AppCompatActivity implements IBackInterface{
     public TabLayout mTabLayout;
     ViewPager mViewPager;
-    private Fragment fragment; //用于传递监听back键的fragment
+    private Fragment upLoadfragment; //用于传递监听back键的fragment
+    private Fragment tiefragment; //用于传递监听back键的fragment
     String[] tab_titles = new String[]{"首页","心愿单","发布","求租贴","我的"};
     int[] tab_imgs = new int[]{R.drawable.tab_shouye,R.drawable.tab_wish,R.drawable.tab_upload,
     R.drawable.tab_tie,R.drawable.tab_me};
@@ -149,17 +150,24 @@ public class MainActivity extends AppCompatActivity implements IBackInterface{
 
 
     @Override
-    public void setSelectedFragment(Fragment fragment) {
-        this.fragment = fragment;
+    public void setSelectedUploadFragment(Fragment fragment) {
+
+        this.upLoadfragment = fragment;
+    }
+
+    @Override
+    public void setSelectedTieFragment(Fragment fragment) {
+
+        this.tiefragment = fragment;
     }
 
     @Override
     public void onBackPressed() {
-        /*if (fragment != null && ((UpLoadFragment) fragment).onBackPressed()) {
+        if (upLoadfragment != null && ((UpLoadFragment) upLoadfragment).onBackPressed()) {
             //实现具体的点击效果
-            ((UpLoadFragment) fragment).onGoBack();
-        }else */if(fragment != null && ((TieFragment) fragment).onBackPressed()){
-            ((TieFragment) fragment).onGoBack();
+            ((UpLoadFragment) upLoadfragment).onGoBack();
+        }else if(tiefragment != null && ((TieFragment) tiefragment).onBackPressed()){
+            ((TieFragment) tiefragment).onGoBack();
         } else {
             Dialog alertDialog = new AlertDialog.Builder(this).
                     setTitle("确定要退出程序吗？").
