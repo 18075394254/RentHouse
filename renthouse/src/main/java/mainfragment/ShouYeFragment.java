@@ -35,6 +35,7 @@ import com.youth.banner.transformer.DefaultTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.RoomSourceActivity;
 import activity.SearchActivity;
 import application.MyApplication;
 import bean.AdapterInfo;
@@ -402,6 +403,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
            @Override
            public void setOnItemClickListener(View view, int position) {
                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), RoomSourceActivity.class));
            }
        });
     }
