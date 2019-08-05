@@ -1,26 +1,23 @@
 package mainfragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,17 +32,19 @@ import com.youth.banner.transformer.DefaultTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.BaiduMapTest;
+import activity.DetailsActivity;
+import activity.ListActivity;
+import activity.RecommendActivity;
 import activity.RoomSourceActivity;
 import activity.SearchActivity;
 import application.MyApplication;
 import bean.AdapterInfo;
 import bean.FiveAdapterInfo;
 import bean.FourAdapterInfo;
-import bean.FiveAdapterInfo;
 import bean.ThreeAdapterInfo;
 import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
-import listener.EndLessOnScrollListener;
 import loader.GlideImageLoader;
 import shouyeadapter.RecyclerFiveAdapter;
 import shouyeadapter.RecyclerFourAdapter;
@@ -200,8 +199,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
             mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
                 @Override
                 public void setOnitemClickListener(View view, int position) {
-                    Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+                   // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), DetailsActivity.class));
                 }
             });
 
@@ -296,8 +295,9 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         mFourAdapter.setListener(new RecyclerFourAdapter.OnItemClickListener() {
             @Override
             public void setOnitemClickListener(View view, int position) {
-                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(getActivity(), BaiduMapTest.class));
+                startActivity(new Intent(getActivity(), DetailsActivity.class));
             }
         });
     }
@@ -332,7 +332,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         mThreeAdapter.setListener(new RecyclerThreeAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), RecommendActivity.class));
             }
         });
     }
@@ -369,7 +370,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         mTwoAdapter.setItemClickListener(new RecyclerTwoAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getActivity(), ListActivity.class));
             }
         });
     }
@@ -402,7 +404,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
        mOneAdapter.setItemClickListener(new RecyclerOneAdapter.OnItemClickListener() {
            @Override
            public void setOnItemClickListener(View view, int position) {
-               Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+              // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), RoomSourceActivity.class));
            }
        });

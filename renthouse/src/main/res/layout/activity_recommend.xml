@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_textColorSelect">
+
+        <ImageView
+            android:id="@+id/recommend_iv_goback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftgoback"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/recommend_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="特色推荐"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
+    <utils.MyNestedScrollView
+        android:id="@+id/recommend_nestedSV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/recommend_rootLin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <android.support.design.widget.TabLayout
+                android:id="@+id/recommend_onetablayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:tabBackground="@color/tab_background"
+                app:tabTextColor="@color/tab_textColor"
+                app:tabSelectedTextColor="@color/tab_textColorSelect"
+                style="@style/MyCustomTabLayout" />
+            <ImageView
+                android:id="@+id/recommend_cardimageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/card"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/recommend_twotablayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:tabBackground="@color/tab_background"
+                app:tabTextColor="@color/tab_textColor"
+                app:tabSelectedTextColor="@color/tab_textColorSelect"
+                style="@style/MyCustomTabLayout" />
+
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/recommend_RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+    </utils.MyNestedScrollView>
+</LinearLayout>

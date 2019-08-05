@@ -1,7 +1,6 @@
 package activity;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.NestedScrollView;
@@ -12,16 +11,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,11 +29,9 @@ import java.util.List;
 
 import application.MyApplication;
 import bean.FiveAdapterInfo;
-import bean.FourAdapterInfo;
 import bean.RoomSouarceInfo;
 import decoration.SpacesItemDecoration;
 import shouyeadapter.RecyclerFiveAdapter;
-import shouyeadapter.RecyclerFourAdapter;
 import shouyeadapter.RoomSourceAdapter;
 import utils.MyNestedScrollView;
 

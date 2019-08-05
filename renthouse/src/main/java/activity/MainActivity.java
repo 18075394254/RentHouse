@@ -10,8 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
-import android.view.WindowManager;
-import android.webkit.WebView;
 
 import com.example.user.renthouse.R;
 
