@@ -1,6 +1,7 @@
 package activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -113,8 +114,8 @@ public class ListActivity extends AppCompatActivity {
         mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
             @Override
             public void setOnitemClickListener(View view, int position) {
-                Toast.makeText(ListActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(ListActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ListActivity.this, DetailsActivity.class));
             }
         });
 

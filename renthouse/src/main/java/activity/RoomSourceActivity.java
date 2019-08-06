@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
@@ -122,8 +123,8 @@ public class RoomSourceActivity extends AppCompatActivity {
                 mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
                     @Override
                     public void setOnitemClickListener(View view, int position) {
-                        Toast.makeText(RoomSourceActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+                       // Toast.makeText(RoomSourceActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RoomSourceActivity.this, DetailsActivity.class));
                     }
                 });
 

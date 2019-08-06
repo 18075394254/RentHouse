@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -113,8 +114,8 @@ public class RecommendActivity extends AppCompatActivity{
         mFiveAdapter.setListener(new RecyclerFiveAdapter.OnItemClickListener() {
             @Override
             public void setOnitemClickListener(View view, int position) {
-                Toast.makeText(RecommendActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(RecommendActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RecommendActivity.this, DetailsActivity.class));
             }
         });
 

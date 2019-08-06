@@ -14,7 +14,7 @@ import com.example.user.renthouse.R;
 public class SplashScreenActivity extends Activity
 {
 	//延时两秒
-	private static final long DELAY_MILLIS = 1500;
+	private static final long DELAY_MILLIS = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)

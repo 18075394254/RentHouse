@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_textColorSelect">
+
+        <ImageView
+            android:id="@+id/messagedetails_iv_goback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftgoback"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="消息详情"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/messagedetails_image"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/card"
+        />
+    <TextView
+        android:id="@+id/messagedetails_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text=" 塔罗牌 即 塔罗。
+占卜用具，通过在指定位置(牌阵)上放置随机抽取的卡牌，分析牌面的象征意义对问题作出解释。常见于西方占卜中，偏向于心灵占卜。
+关于塔罗一词的含义，流传甚广的是王道的意思，但在古埃及的象形文字含义之谜破解之后，此说法便已站不住脚。塔罗的真正来源还在考证之中。"
+        />
+</LinearLayout>

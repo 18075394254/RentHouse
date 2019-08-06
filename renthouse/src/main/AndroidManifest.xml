@@ -36,6 +36,8 @@
         <activity android:name="activity.RecommendActivity"/>
         <activity android:name="activity.DetailsActivity"/>
         <activity android:name="activity.BaiduMapTest"/>
+        <activity android:name="activity.MessageActivity"/>
+        <activity android:name="activity.MessageDetailsActivity"/>
 
     </application>
 

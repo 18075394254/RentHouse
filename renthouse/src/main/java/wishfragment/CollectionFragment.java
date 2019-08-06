@@ -1,5 +1,6 @@
 package wishfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.DetailsActivity;
 import bean.CollectionAdapterInfo;
 import bean.CollectionAdapterInfo;
 import decoration.SpacesItemDecoration;
@@ -88,8 +90,8 @@ public class CollectionFragment extends Fragment {
             mCollectionAdapter.setListener(new CollectionRecyclerAdapter.OnItemClickListener() {
                 @Override
                 public void setOnitemClickListener(View view, int position) {
-                    Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-
+                   // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), DetailsActivity.class));
                 }
             });
 

@@ -214,12 +214,12 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
 
     private void initThreeRecyclerView() {
 
-            mThreeRecyclerView = (RecyclerView) findViewById(R.id.details_threeRecyclerview);
-            //设置每行的列数
-            mLayoutManager = new GridLayoutManager(DetailsActivity.this, 2, GridLayoutManager.VERTICAL, false);
-            //添加数据
-            List<DetailsAdapterInfo> detailsInfos = new ArrayList<>();
-            DetailsAdapterInfo info = null;
+                  mThreeRecyclerView = (RecyclerView) findViewById(R.id.details_threeRecyclerview);
+        //设置每行的列数
+        mLayoutManager = new GridLayoutManager(DetailsActivity.this, 2, GridLayoutManager.VERTICAL, false);
+        //添加数据
+        List<DetailsAdapterInfo> detailsInfos = new ArrayList<>();
+        DetailsAdapterInfo info = null;
 
         String[] message1s = new String[]{"朝向: ","入住时间: ","楼层: ","电梯: ","用水: ","用电: ","燃气: ","采暖: "};
         String[] message2s = new String[]{"南","随时入住","2/4层","无","民水","民电","无","集体供暖"};
@@ -230,14 +230,14 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
             detailsInfos.add(info);
         }
 
-            //设置adapter的数据
-            mDetailsAdapter = new DetailsRecyclerAdapter(detailsInfos,MyApplication.type3);
+        //设置adapter的数据
+        mDetailsAdapter = new DetailsRecyclerAdapter(detailsInfos,MyApplication.type3);
         mThreeRecyclerView.setAdapter(mDetailsAdapter);
         mThreeRecyclerView.setLayoutManager(mLayoutManager);
 
-            //添加ItemDecoration，item之间的间隔
-            int leftRight = dip2px(15);
-            int topBottom = 0;
+        //添加ItemDecoration，item之间的间隔
+        int leftRight = dip2px(15);
+        int topBottom = 0;
         mThreeRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
 
     }

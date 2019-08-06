@@ -35,6 +35,7 @@ import java.util.List;
 import activity.BaiduMapTest;
 import activity.DetailsActivity;
 import activity.ListActivity;
+import activity.MessageActivity;
 import activity.RecommendActivity;
 import activity.RoomSourceActivity;
 import activity.SearchActivity;
@@ -425,6 +426,12 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private void initLayout() {
         cityLin = mView.findViewById(R.id.shouye_cityLin);
         messageLin = mView.findViewById(R.id.shouye_messageLin);
+        messageLin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MessageActivity.class));
+            }
+        });
     }
 
     //初始化SearchView
