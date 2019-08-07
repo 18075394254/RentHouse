@@ -15,5 +15,7 @@ public class FiveAdapterInfo {
     public String tv_8;
     public String tv_9;
     public String tv_10;
+    public String tv_11;
+    public String tv_12;
     public String url;
 }

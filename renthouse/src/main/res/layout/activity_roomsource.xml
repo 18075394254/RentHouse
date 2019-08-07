@@ -34,53 +34,58 @@
     </RelativeLayout>
 
     <utils.MyNestedScrollView
-        tools:context="activity.RoomSourceActivity"
         android:id="@+id/roomsource_nestedSV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context="activity.RoomSourceActivity"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/tab_textColorSelect"
                 >
+
                 <LinearLayout
                     android:id="@+id/rootSearchView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:orientation="vertical"
                     >
+
                     <SearchView
                         android:id="@+id/roomsource_searchView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/searchviewshape"
                         android:iconifiedByDefault="false"
                         android:queryBackground="@null"
                         android:queryHint="输入地铁、小区、商圈搜索"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
                         />
                 </LinearLayout>
 
             </RelativeLayout>
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/roomsource_onetablayout"
+                style="@style/MyCustomTabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:tabBackground="@color/tab_background"
-                app:tabTextColor="@color/tab_textColor"
                 app:tabSelectedTextColor="@color/tab_textColorSelect"
-                style="@style/MyCustomTabLayout" />
+                app:tabTextColor="@color/tab_textColor"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/roomsource_oneRecyclerView"
@@ -88,22 +93,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 />
+
             <TextView
                 android:id="@+id/room_tv_lookmore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="查看全部公寓"
                 android:gravity="center"
+                android:text="查看全部公寓"
 
                 />
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/roomsource_twotablayout"
+                style="@style/MyCustomTabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:tabBackground="@color/tab_background"
-                app:tabTextColor="@color/tab_textColor"
                 app:tabSelectedTextColor="@color/tab_textColorSelect"
-                style="@style/MyCustomTabLayout" />
+                app:tabTextColor="@color/tab_textColor"/>
 
             <com.jcodecraeer.xrecyclerview.XRecyclerView
                 android:id="@+id/roomsource_twoRecyclerView"
@@ -112,6 +119,7 @@
                 android:layout_marginTop="5dp"
 
                 />
-</LinearLayout>
+        </LinearLayout>
     </utils.MyNestedScrollView>
+
 </LinearLayout>

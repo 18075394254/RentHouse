@@ -49,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
     private RecyclerView mOneRecyclerView,mTwoRecyclerView,mThreeRecyclerView;
     private GridLayoutManager mLayoutManager;
     private DetailsRecyclerAdapter mDetailsAdapter;
-    private ImageView phoneImg;
+    private ImageView phoneImg,gobackImage;
     private MapView mMapView = null;
     private TextView tv_tishi;
     
@@ -95,6 +95,15 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
             }
         });
 
+        gobackImage = (ImageView) findViewById(R.id.details_iv_goback);
+
+        gobackImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         tv_tishi = (TextView) findViewById(R.id.details_tv_tishi);
         String string = "1.异性2合租需谨慎，夜间看房请找亲友陪同"+"\n"+
                 "2.没完成合同前，不要交任何费用"+"\n"+
@@ -124,7 +133,7 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
         }
 
         //设置adapter的数据
-        mFiveAdapter = new RecyclerFiveAdapter(fiveInfos);
+        mFiveAdapter = new RecyclerFiveAdapter(fiveInfos,MyApplication.type1);
         mFourRecyclerView.setAdapter(mFiveAdapter);
 
 

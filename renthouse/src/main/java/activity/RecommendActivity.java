@@ -93,7 +93,7 @@ public class RecommendActivity extends AppCompatActivity{
         }
 
         //设置adapter的数据
-        mFiveAdapter = new RecyclerFiveAdapter(fiveInfos);
+        mFiveAdapter = new RecyclerFiveAdapter(fiveInfos,MyApplication.type3);
         mRecyclerView.setAdapter(mFiveAdapter);
 
 

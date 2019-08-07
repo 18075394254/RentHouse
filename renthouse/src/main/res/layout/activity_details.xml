@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <RelativeLayout
+        android:id="@+id/details_relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/tab_textColorSelect">
+        android:background="@color/tab_textColorSelect"
+        android:layout_alignParentTop="true"
+        >
 
         <ImageView
-            android:id="@+id/recommend_iv_goback"
+            android:id="@+id/details_iv_goback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/leftgoback"
@@ -17,7 +20,7 @@
             android:layout_marginLeft="10dp"
             />
         <TextView
-            android:id="@+id/recommend_Text"
+            android:id="@+id/details_Text"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="房源详情"
@@ -30,7 +33,9 @@
     <utils.MyNestedScrollView
         android:id="@+id/details_nestedSV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/details_relative"
+        >
         <LinearLayout
             android:id="@+id/details_rootLin"
             android:layout_width="match_parent"
@@ -247,4 +252,92 @@
 
 
     </utils.MyNestedScrollView>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="5"
+        android:background="@color/White"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            >
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/collection_set"
+                android:clickable="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收藏"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            >
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/share"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分享"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="在线联系"
+            android:textColor="@color/white"
+
+            android:layout_weight="1"
+            android:background="@color/tab_textColorSelect"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话联系"
+            android:textColor="@color/white"
+
+            android:layout_weight="1"
+            android:background="@color/tab_textColorSelect"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="在线预约"
+            android:textColor="@color/white"
+
+            android:layout_weight="1"
+            android:background="@color/tab_textColorSelect"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

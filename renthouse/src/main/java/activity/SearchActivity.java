@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -92,7 +93,8 @@ public class SearchActivity  extends AppCompatActivity {
         mRecyclerAdapter.setItemClickListener(new SearchRecyclerAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                Toast.makeText(SearchActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(SearchActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SearchActivity.this, RoomSourceActivity.class));
             }
         });
         mRecyclerView_hot.setLoadingMoreEnabled(false);
@@ -126,7 +128,8 @@ public class SearchActivity  extends AppCompatActivity {
         mRecyclerTwoAdapter.setItemClickListener(new SearchRecyclerTwoAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                Toast.makeText(SearchActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SearchActivity.this, RoomSourceActivity.class));
+              //  Toast.makeText(SearchActivity.this,"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
             }
         });
         mRecyclerView_his.setLoadingMoreEnabled(false);

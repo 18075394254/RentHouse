@@ -65,7 +65,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private MyNestedScrollView nestedSV;
     Banner banner;
     private GridView mGridView;
-    String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","平台分类","免费看房"};
+    String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","短租房源","家政服务"};
     int[] imgs = new int[]{R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five, R.drawable.six, R.drawable.seven, R.drawable.eight};
     List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
 
@@ -179,7 +179,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
             }
 
             //设置adapter的数据
-            mFiveAdapter = new RecyclerFiveAdapter(fiveInfos);
+            mFiveAdapter = new RecyclerFiveAdapter(fiveInfos,MyApplication.type1);
             fiveRecyclerView.setAdapter(mFiveAdapter);
 
 

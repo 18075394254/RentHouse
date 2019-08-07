@@ -5,13 +5,46 @@
               android:layout_height="wrap_content"
               android:paddingBottom="20dp"
     >
-    <ImageView
-        android:id="@+id/iv_imageView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/background"
-        />
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/shouye_five_iv_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/background"
+            />
+        <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+          android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/shouye_five_iv_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher_round"
+                android:visibility="gone"
+                />
+            <TextView
+                android:id="@+id/shouye_five_text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发布人姓名"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:textColor="@color/tab_textColor"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +56,7 @@
         android:layout_marginLeft="5dp"
         >
     <TextView
-        android:id="@+id/tv_1"
+        android:id="@+id/shouye_five_text_whole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -35,7 +68,7 @@
 
 
     <TextView
-        android:id="@+id/tv_2"
+        android:id="@+id/shouye_five_text_oneroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -58,7 +91,7 @@
             android:src="@mipmap/star"
             />
         <TextView
-            android:id="@+id/tv_3"
+            android:id="@+id/shouye_five_text_starNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
@@ -70,18 +103,18 @@
 
 
         <TextView
-            android:id="@+id/tv_4"
+            android:id="@+id/shouye_five_text_oneroom2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             style="@style/MyCustomTabLayout"
             android:textColor="@drawable/textselector"
-            android:text="一室一厅 |"
+            android:text="1室1厅1卫 |"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="5dp"
             />
         <TextView
-            android:id="@+id/tv_5"
+            android:id="@+id/shouye_five_text_landlord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
@@ -93,7 +126,7 @@
 
     </LinearLayout>
         <TextView
-            android:id="@+id/tv_6"
+            android:id="@+id/shouye_five_text_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="地址：xxxxxxxxxxxxxxx"
@@ -106,7 +139,7 @@
             android:layout_marginLeft="5dp"
             >
             <TextView
-                android:id="@+id/tv_7"
+                android:id="@+id/shouye_five_text_label1"
                 android:layout_width="50dp"
                 android:layout_height="25dp"
                 android:background="@color/tab_textColorSelect"
@@ -117,7 +150,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_8"
+                android:id="@+id/shouye_five_text_label2"
                 android:layout_width="50dp"
                 android:layout_height="25dp"
                 android:background="@color/tab_textColorSelect"
@@ -128,7 +161,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_9"
+                android:id="@+id/shouye_five_text_label3"
                 android:layout_width="50dp"
                 android:layout_height="25dp"
                 android:background="@color/tab_textColorSelect"
@@ -139,17 +172,33 @@
                 />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_10"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            style="@style/MyCustomTabLayout"
-            android:textColor="#FF0000"
-            android:text="3500元/月"
-            android:layout_marginLeft="5dp"
-            />
+            >
+            <TextView
+                android:id="@+id/shouye_five_text_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                style="@style/MyCustomTabLayout"
+                android:textColor="#FF0000"
+                android:text="3500元/月"
+                android:layout_marginLeft="5dp"
+                />
+            <TextView
+                android:id="@+id/shouye_five_text_updatetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                style="@style/MyCustomTabLayout"
+                android:textColor="#FF0000"
+                android:text="一小时前更新"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
 
     </LinearLayout>
 </LinearLayout>
