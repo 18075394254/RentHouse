@@ -26,6 +26,12 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
+import com.zaaach.citypicker.CityPicker;
+import com.zaaach.citypicker.adapter.OnPickListener;
+import com.zaaach.citypicker.model.City;
+import com.zaaach.citypicker.model.HotCity;
+import com.zaaach.citypicker.model.LocateState;
+import com.zaaach.citypicker.model.LocatedCity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +41,7 @@ import bean.DetailsAdapterInfo;
 import bean.FiveAdapterInfo;
 import decoration.SpacesItemDecoration;
 import loader.GlideImageLoader;
+import mainfragment.ShouYeFragment;
 import shouyeadapter.DetailsRecyclerAdapter;
 import shouyeadapter.RecyclerFiveAdapter;
 import utils.MyNestedScrollView;
@@ -102,6 +109,8 @@ public class DetailsActivity extends AppCompatActivity implements OnBannerListen
             public void onClick(View view) {
                 finish();
             }
+
+
         });
 
         tv_tishi = (TextView) findViewById(R.id.details_tv_tishi);

@@ -1,1 +1,1 @@
-include ':renthouse', ':banner', ':xrecyclerview'
+include ':renthouse', ':banner', ':xrecyclerview', ':citypicker'

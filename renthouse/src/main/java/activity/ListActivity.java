@@ -60,9 +60,9 @@ public class ListActivity extends AppCompatActivity {
         mCardImage = (ImageView) findViewById(R.id.list_cardimageView);
         mRootView = (LinearLayout) findViewById(R.id.list_rootLin);
 
-        Glide.with(MyApplication.getContext()).
+        /*Glide.with(MyApplication.getContext()).
                 load("http://pic30.photophoto.cn/20140313/0040039490056765_b.jpg").
-                placeholder(R.mipmap.card).error(R.mipmap.card).into(mCardImage);
+                placeholder(R.mipmap.card).error(R.mipmap.card).into(mCardImage);*/
         mBackImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

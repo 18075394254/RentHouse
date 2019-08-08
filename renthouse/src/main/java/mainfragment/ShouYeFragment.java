@@ -15,6 +15,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -28,6 +29,12 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.transformer.DefaultTransformer;
+import com.zaaach.citypicker.CityPicker;
+import com.zaaach.citypicker.adapter.OnPickListener;
+import com.zaaach.citypicker.model.City;
+import com.zaaach.citypicker.model.HotCity;
+import com.zaaach.citypicker.model.LocateState;
+import com.zaaach.citypicker.model.LocatedCity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +72,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private MyNestedScrollView nestedSV;
     Banner banner;
     private GridView mGridView;
+    private List<HotCity> hotCities;
     String[] titles = new String[]{"单间","整套","品牌公寓","月付房源","求租贴","我要发布","短租房源","家政服务"};
     int[] imgs = new int[]{R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five, R.drawable.six, R.drawable.seven, R.drawable.eight};
     List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
@@ -94,6 +102,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private int times = 0;
 
     private LinearLayoutManager mLinearLayoutManager;
+    private TextView shouye_city_Tv;
 
     public void initData(){
         transformers.add(DefaultTransformer.class);
@@ -425,11 +434,53 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     //初始化标题栏上城市名和消息两个LinearLayout布局
     private void initLayout() {
         cityLin = mView.findViewById(R.id.shouye_cityLin);
+        shouye_city_Tv = mView.findViewById(R.id.shouye_city_Tv);
         messageLin = mView.findViewById(R.id.shouye_messageLin);
+        hotCities = new ArrayList<>();
+        hotCities.add(new HotCity("北京", "北京", "101010100"));
+        hotCities.add(new HotCity("上海", "上海", "101020100"));
+        hotCities.add(new HotCity("广州", "广东", "101280101"));
+        hotCities.add(new HotCity("深圳", "广东", "101280601"));
+        hotCities.add(new HotCity("杭州", "浙江", "101210101"));
         messageLin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), MessageActivity.class));
+            }
+        });
+
+        cityLin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CityPicker.from(getActivity())
+                        .enableAnimation(true)
+                        .setAnimationStyle(R.style.CustomAnim)
+                        .setLocatedCity(null)
+                        .setHotCities(hotCities)
+                        .setOnPickListener(new OnPickListener() {
+                            @Override
+                            public void onPick(int position, City data) {
+                                shouye_city_Tv.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
+
+                            }
+
+                            @Override
+                            public void onCancel() {
+                               // Toast.makeText(getApplicationContext(), "取消选择", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onLocate() {
+                                //开始定位，这里模拟一下定位
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        CityPicker.from(ShouYeFragment.this).locateComplete(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
+                                    }
+                                }, 1500);
+                            }
+                        })
+                        .show();
             }
         });
     }
@@ -477,4 +528,6 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     public int dip2px(float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, getResources().getDisplayMetrics());
     }
+
+
 }

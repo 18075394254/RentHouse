@@ -68,7 +68,7 @@ public class RoomSourceActivity extends AppCompatActivity {
 
         initTablayoutView();
 
-        initOneRecyclerView();
+        //initOneRecyclerView();
 
         initTwoRecyclerView();
 
@@ -187,7 +187,7 @@ public class RoomSourceActivity extends AppCompatActivity {
     private void initOneRecyclerView() {
         //第四个RecyclerView
 
-        mOneRecyclerView = (RecyclerView)findViewById(R.id.roomsource_oneRecyclerView);
+      //  mOneRecyclerView = (RecyclerView)findViewById(R.id.roomsource_oneRecyclerView);
             //设置每行的列数
             mLayoutManager = new GridLayoutManager(RoomSourceActivity.this, 1, GridLayoutManager.HORIZONTAL, false);
             //添加数据
