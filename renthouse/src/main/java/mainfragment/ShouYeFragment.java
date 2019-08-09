@@ -1,6 +1,13 @@
 package mainfragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -54,12 +61,21 @@ import bean.ThreeAdapterInfo;
 import bean.TwoAdapterInfo;
 import decoration.SpacesItemDecoration;
 import loader.GlideImageLoader;
+import myinterface.PermissionListener;
 import shouyeadapter.RecyclerFiveAdapter;
 import shouyeadapter.RecyclerFourAdapter;
 import shouyeadapter.RecyclerOneAdapter;
 import shouyeadapter.RecyclerThreeAdapter;
 import shouyeadapter.RecyclerTwoAdapter;
 import utils.MyNestedScrollView;
+
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+
+import static activity.BaseActivity.requestRuntimePermissions;
+
 
 
 public class ShouYeFragment extends Fragment implements OnBannerListener{
@@ -104,6 +120,22 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     private LinearLayoutManager mLinearLayoutManager;
     private TextView shouye_city_Tv;
 
+    public LocationClient mLocationClient = null; //初始化LocationClient类
+    public MyLocationListener myListener = new MyLocationListener();
+
+    private BDLocation BDlocation = null;
+
+    private static String[] PERMISSIONS_STORAGE = {
+            "android.permission.ACCESS_COARSE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.ACCESS_WIFI_STATE",
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            "android.permission.CHANGE_WIFI_STATE",
+            "android.permission.INTERNET"};
+    private SharedPreferences sp;
+    String cityName = "";
+
     public void initData(){
         transformers.add(DefaultTransformer.class);
        /* transformers.add(AccordionTransformer.class);
@@ -127,6 +159,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_shouye,container,false);
+        sp = getActivity().getSharedPreferences("location", Context.MODE_PRIVATE);;
         //初始化SearchView
         initSearchView();
         //初始化标题栏上城市名和消息两个LinearLayout布局
@@ -152,7 +185,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
         //防止ScrollView与RecyclerView滑动冲突
         avoidSlideError();
-
+        //定位当前位置
+        initLoactions();
 
         return mView;
     }
@@ -453,29 +487,34 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
             @Override
             public void onClick(View view) {
                 CityPicker.from(getActivity())
-                        .enableAnimation(true)
+                        .enableAnimation(false)
                         .setAnimationStyle(R.style.CustomAnim)
                         .setLocatedCity(null)
-                        .setHotCities(hotCities)
+                        .setHotCities(null)
                         .setOnPickListener(new OnPickListener() {
                             @Override
                             public void onPick(int position, City data) {
-                                shouye_city_Tv.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
-
+                                shouye_city_Tv.setText(data.getName());
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("city", data.getName());
+                                editor.commit();
                             }
 
                             @Override
                             public void onCancel() {
-                               // Toast.makeText(getApplicationContext(), "取消选择", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(getActivity(), "取消选择", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onLocate() {
+
+                              //  Toast.makeText(getActivity(), "定位完成", Toast.LENGTH_SHORT).show();
                                 //开始定位，这里模拟一下定位
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        CityPicker.from(ShouYeFragment.this).locateComplete(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
+                                        if (BDlocation != null)
+                                        CityPicker.from(getActivity()).locateComplete(new LocatedCity(BDlocation.getCity(),BDlocation.getProvince(),BDlocation.getCountryCode()), LocateState.SUCCESS);
                                     }
                                 }, 1500);
                             }
@@ -509,6 +548,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         //开始轮播
         banner.startAutoPlay();
 
+
+
     }
 
     @Override
@@ -522,12 +563,125 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
     public void onResume() {
         super.onResume();
 
-
     }
+
 
     public int dip2px(float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, getResources().getDisplayMetrics());
     }
 
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            //将获取的City赋值给txt
+            /**
+             *1.国家:location.getCountry()
+             * 2.城市:location.getCity()
+             * 3.区域(例：天河区)：location.getDistrict()
+             * 4.地点(例：风信路)：location.getStreet()
+             * 5.详细地址：location.getAddrStr()
+             */
+            final String cityname = location.getCity();
+            Log.i("shouye","Name = "+location.getCity());
+            Log.i("shouye","address = "+location.getAddrStr());
+            BDlocation = location;
+            Dialog alertDialog = new AlertDialog.Builder(getActivity()).
+                    setTitle("当前城市定位到"+location.getCity()+",是否确认定位？").
+                    setIcon(R.mipmap.log).
+                    setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            shouye_city_Tv.setText(cityname);
 
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("city", cityname);
+                            editor.commit();
+                        }
+                    }).
+                    setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                        }
+                    }).
+                    create();
+            if (cityName.equals(cityname)){
+
+            }else{
+                alertDialog.show();
+            }
+
+
+
+        }
+        public void onReceivePoi(BDLocation arg0) {
+        }
+    }
+
+
+    private void initLoactions(){
+
+        cityName = sp.getString("city","上海");
+        shouye_city_Tv.setText(cityName);
+
+        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+        //声明LocationClient类
+        mLocationClient = new LocationClient(MyApplication.getContext());
+        mLocationClient.registerLocationListener(myListener); //注册监听函数
+        setLocationOption(); //定义setLocationOption()方法
+        mLocationClient.start(); //执行定位
+
+        if (Build.VERSION.SDK_INT >= 23) {//判断当前系统是不是Android6.0
+            requestRuntimePermissions(PERMISSIONS_STORAGE, new PermissionListener() {
+                @Override
+                public void granted() {
+                    //权限申请通过
+                }
+
+                @Override
+                public void denied(List<String> deniedList) {
+                    //权限申请未通过
+                    for (String denied : deniedList) {
+                        if (denied.equals("android.permission.ACCESS_FINE_LOCATION")) {
+
+                            Toast.makeText(getActivity(),"定位失败，请检查是否打开定位权限！",Toast.LENGTH_SHORT).show();
+
+                        } else if (denied.equals("android.permission.ACCESS_NETWORK_STATE")){
+
+                            Toast.makeText(getActivity(),"定位失败，请检查是否打开网络权限！",Toast.LENGTH_SHORT).show();
+
+                        }else if (denied.equals("android.permission.CHANGE_WIFI_STATE")){
+
+                            Toast.makeText(getActivity(),"定位失败，请检查是否打开WiFi权限！",Toast.LENGTH_SHORT).show();
+
+                        }else if (denied.equals("android.permission.ACCESS_FINE_LOCATION")){
+
+                            Toast.makeText(getActivity(),"定位失败，请检查是否打开定位权限！",Toast.LENGTH_SHORT).show();
+
+                        }else{
+
+                        }
+
+
+                    }
+
+                }
+            });
+        }
+
+    }
+
+    //设置相关参数
+    private void setLocationOption() {
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); //打开gps
+        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
+        option.setAddrType("all");//返回定位结果包含地址信息
+        option.setPriority(LocationClientOption.NetWorkFirst); // 设置网络优先
+        option.setPriority(LocationClientOption.GpsFirst);       //gps
+        option.disableCache(true);//禁止启用缓存定位
+        mLocationClient.setLocOption(option);
+
+    }
 }

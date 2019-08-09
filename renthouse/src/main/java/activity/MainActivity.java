@@ -25,7 +25,7 @@ import mainfragment.TieFragment;
 import mainfragment.UpLoadFragment;
 import mainfragment.WishFragment;
 
-public class MainActivity extends AppCompatActivity implements IBackInterface{
+public class MainActivity extends BaseActivity implements IBackInterface{
     public TabLayout mTabLayout;
     ViewPager mViewPager;
     private Fragment upLoadfragment; //用于传递监听back键的fragment

@@ -3,14 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RentHouse.iml" filepath="$PROJECT_DIR$/RentHouse.iml" />
-      <module fileurl="file://E:/AndroidStudioProjects/RentHouse/RentHouse.iml" filepath="E:/AndroidStudioProjects/RentHouse/RentHouse.iml" />
       <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
-      <module fileurl="file://E:/AndroidStudioProjects/RentHouse/banner/banner.iml" filepath="E:/AndroidStudioProjects/RentHouse/banner/banner.iml" />
       <module fileurl="file://$PROJECT_DIR$/citypicker/citypicker.iml" filepath="$PROJECT_DIR$/citypicker/citypicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/renthouse/renthouse.iml" filepath="$PROJECT_DIR$/renthouse/renthouse.iml" />
-      <module fileurl="file://E:/AndroidStudioProjects/RentHouse/renthouse/renthouse.iml" filepath="E:/AndroidStudioProjects/RentHouse/renthouse/renthouse.iml" />
       <module fileurl="file://$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" filepath="$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" />
-      <module fileurl="file://E:/AndroidStudioProjects/RentHouse/xrecyclerview/xrecyclerview.iml" filepath="E:/AndroidStudioProjects/RentHouse/xrecyclerview/xrecyclerview.iml" />
     </modules>
   </component>
 </project>
