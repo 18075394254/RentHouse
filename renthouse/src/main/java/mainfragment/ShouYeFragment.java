@@ -68,6 +68,7 @@ import shouyeadapter.RecyclerOneAdapter;
 import shouyeadapter.RecyclerThreeAdapter;
 import shouyeadapter.RecyclerTwoAdapter;
 import utils.MyNestedScrollView;
+import utils.NetWorkUtils;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -487,7 +488,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
             @Override
             public void onClick(View view) {
                 CityPicker.from(getActivity())
-                        .enableAnimation(false)
+                        .enableAnimation(true)
                         .setAnimationStyle(R.style.CustomAnim)
                         .setLocatedCity(null)
                         .setHotCities(null)
@@ -584,6 +585,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
             final String cityname = location.getCity();
             Log.i("shouye","Name = "+location.getCity());
             Log.i("shouye","address = "+location.getAddrStr());
+            mLocationClient.stop();
             BDlocation = location;
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
                     setTitle("当前城市定位到"+location.getCity()+",是否确认定位？").
@@ -596,6 +598,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
                             SharedPreferences.Editor editor = sp.edit();
                             editor.putString("city", cityname);
                             editor.commit();
+
                         }
                     }).
                     setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -606,7 +609,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
                         }
                     }).
                     create();
-            if (cityName.equals(cityname)){
+            if (cityname.equals(shouye_city_Tv.getText().toString())){
 
             }else{
                 alertDialog.show();
@@ -624,50 +627,73 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
         cityName = sp.getString("city","上海");
         shouye_city_Tv.setText(cityName);
+        if (!NetWorkUtils.isMobileDataEnable(MyApplication.getContext())){
+            Dialog alertDialog = new AlertDialog.Builder(getActivity()).
+                    setTitle("当前没有网络，是否打开网络设置？").
+                    setIcon(R.mipmap.log).
+                    setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                           NetWorkUtils.GoSetting(getActivity());
+                        }
+                    }).
+                    setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
-        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
-        //声明LocationClient类
-        mLocationClient = new LocationClient(MyApplication.getContext());
-        mLocationClient.registerLocationListener(myListener); //注册监听函数
-        setLocationOption(); //定义setLocationOption()方法
-        mLocationClient.start(); //执行定位
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                        }
+                    }).
+                    create();
+            alertDialog.show();
+        }else {
 
-        if (Build.VERSION.SDK_INT >= 23) {//判断当前系统是不是Android6.0
-            requestRuntimePermissions(PERMISSIONS_STORAGE, new PermissionListener() {
-                @Override
-                public void granted() {
-                    //权限申请通过
-                }
+            //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+            //声明LocationClient类
+            mLocationClient = new LocationClient(MyApplication.getContext());
+            mLocationClient.registerLocationListener(myListener); //注册监听函数
+            setLocationOption(); //定义setLocationOption()方法
+            mLocationClient.start(); //执行定位
 
-                @Override
-                public void denied(List<String> deniedList) {
-                    //权限申请未通过
-                    for (String denied : deniedList) {
-                        if (denied.equals("android.permission.ACCESS_FINE_LOCATION")) {
+            if (Build.VERSION.SDK_INT >= 23) {//判断当前系统是不是Android6.0
+                requestRuntimePermissions(PERMISSIONS_STORAGE, new PermissionListener() {
+                    @Override
+                    public void granted() {
+                        //权限申请通过
+                    }
 
-                            Toast.makeText(getActivity(),"定位失败，请检查是否打开定位权限！",Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void denied(List<String> deniedList) {
+                        //权限申请未通过
+                        for (String denied : deniedList) {
+                            if (denied.equals("android.permission.ACCESS_FINE_LOCATION")) {
 
-                        } else if (denied.equals("android.permission.ACCESS_NETWORK_STATE")){
+                                Toast.makeText(getActivity(), "定位失败，请检查是否打开定位权限！", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(getActivity(),"定位失败，请检查是否打开网络权限！",Toast.LENGTH_SHORT).show();
+                            } else if (denied.equals("android.permission.ACCESS_NETWORK_STATE")) {
 
-                        }else if (denied.equals("android.permission.CHANGE_WIFI_STATE")){
+                                Toast.makeText(getActivity(), "定位失败，请检查是否打开网络权限！", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(getActivity(),"定位失败，请检查是否打开WiFi权限！",Toast.LENGTH_SHORT).show();
+                            } else if (denied.equals("android.permission.CHANGE_WIFI_STATE")) {
 
-                        }else if (denied.equals("android.permission.ACCESS_FINE_LOCATION")){
+                                Toast.makeText(getActivity(), "定位失败，请检查是否打开WiFi权限！", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(getActivity(),"定位失败，请检查是否打开定位权限！",Toast.LENGTH_SHORT).show();
+                            } else if (denied.equals("android.permission.ACCESS_FINE_LOCATION")) {
 
-                        }else{
+                                Toast.makeText(getActivity(), "定位失败，请检查是否打开定位权限！", Toast.LENGTH_SHORT).show();
+
+                            } else if (denied.equals("android.permission.INTERNET")) {
+
+                                Toast.makeText(getActivity(), "当前无网络信号！", Toast.LENGTH_SHORT).show();
+
+                            }
+
 
                         }
 
-
                     }
-
-                }
-            });
+                });
+            }
         }
 
     }
@@ -681,6 +707,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         option.setPriority(LocationClientOption.NetWorkFirst); // 设置网络优先
         option.setPriority(LocationClientOption.GpsFirst);       //gps
         option.disableCache(true);//禁止启用缓存定位
+        //option.setScanSpan(0);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
         mLocationClient.setLocOption(option);
 
     }
