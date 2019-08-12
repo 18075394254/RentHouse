@@ -26,9 +26,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="QI9H0TSFuiKShGrQx1PvqbcvHW0V5od6" />
+
         <activity android:name="activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -45,6 +43,8 @@
         <activity android:name="activity.BaiduMapTest"/>
         <activity android:name="activity.MessageActivity"/>
         <activity android:name="activity.MessageDetailsActivity"/>
+        <activity android:name="activity.MyInfoActivity"/>
+        <activity android:name="activity.ComplaintActivity"/>
 
         <service android:name="com.baidu.location.f"
                  android:enabled="true"
@@ -55,7 +55,10 @@
                 </action>
             </intent-filter>
         </service>
-
+      <!-- 百度地图的key码-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="QI9H0TSFuiKShGrQx1PvqbcvHW0V5od6" />
     </application>
 
 </manifest>

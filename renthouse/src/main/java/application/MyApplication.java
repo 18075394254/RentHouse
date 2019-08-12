@@ -31,6 +31,8 @@ public class MyApplication extends Application {
     public static int type1 = 1;
     public static int type2 = 2;
     public static int type3 = 3;
+    public static int IMAGE_PHONE = 0;
+    public static int IMAGE_CAMERA = 1;
     @Override
     public void onCreate() {
         super.onCreate();

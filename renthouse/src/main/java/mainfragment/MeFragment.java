@@ -1,5 +1,6 @@
 package mainfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.user.renthouse.R;
@@ -17,6 +19,10 @@ import com.example.user.renthouse.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.ComplaintActivity;
+import activity.MessageActivity;
+import activity.MessageDetailsActivity;
+import activity.MyInfoActivity;
 import bean.MeAdapterInfoOne;
 import bean.MeAdapterInfoTwo;
 import decoration.SpacesItemDecoration;
@@ -34,6 +40,7 @@ public class MeFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private MeRecyclerOneAdapter mOneAdapter;
     private MeRecyclerTwoAdapter mTwoAdapter;
+    private RelativeLayout mRelativeLayout;
 
     String[] titles = new String[]{"信用认证","我的帖子","我的发布"};
     String[] titles2 = new String[]{"消息中心","浏览记录","我的收藏","关于我们","投诉建议","联系客服","账号设置"};
@@ -48,6 +55,14 @@ public class MeFragment extends Fragment {
         initRecyclerView();
         //初始化第二个RecyclerView
         initTwoRecyclerView();
+
+        mRelativeLayout = mView.findViewById(R.id.relativelayout_info);
+        mRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MyInfoActivity.class));
+            }
+        });
         return mView;
     }
 
@@ -76,12 +91,35 @@ public class MeFragment extends Fragment {
         //添加ItemDecoration，item之间的间隔
         int leftRight = dip2px(15);
         int topBottom = 0;
-        myOneRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
+        myTwoRecyclerView.addItemDecoration(new SpacesItemDecoration(leftRight, topBottom));
 
-        mOneAdapter.setItemClickListener(new MeRecyclerOneAdapter.OnItemClickListener() {
+        mTwoAdapter.setItemClickListener(new MeRecyclerTwoAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
                 Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        startActivity(new Intent(getActivity(), MessageActivity.class));
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        startActivity(new Intent(getActivity(), MessageDetailsActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(getActivity(), ComplaintActivity.class));
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
+
+                        break;
+                }
             }
         });
     }
@@ -116,6 +154,8 @@ public class MeFragment extends Fragment {
             @Override
             public void setOnItemClickListener(View view, int position) {
                 Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+
+
             }
         });
     }

@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity implements IBackInterface{
         mFragments.add(new MeFragment());
 
         initView();
+
     }
 
     /**
@@ -87,6 +88,9 @@ public class MainActivity extends BaseActivity implements IBackInterface{
 
             }
         });
+
+        //设置预先加载5个页面
+        mViewPager.setOffscreenPageLimit(5);
 
 
         //TabLayout的事件
