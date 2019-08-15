@@ -3,6 +3,7 @@ package shouyeadapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class MessageRecyclerAdapter extends RecyclerView.Adapter<MessageRecycler
 
     private List<MessageAdapterInfo> mDatas;
 
+
     //定义一个接口
     public interface OnItemClickListener{
         void setOnitemClickListener(View view, int position);
@@ -37,6 +39,7 @@ public class MessageRecyclerAdapter extends RecyclerView.Adapter<MessageRecycler
 
     public MessageRecyclerAdapter( List<MessageAdapterInfo> mDatas) {
         this.mDatas = mDatas;
+
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,6 +49,12 @@ public class MessageRecyclerAdapter extends RecyclerView.Adapter<MessageRecycler
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+            if (!(mDatas.get(position).title == null))
+            holder.tvInfoTitle.setText(mDatas.get(position).title);
+        if (!(mDatas.get(position).content== null))
+            holder.tvInfoContent.setText(mDatas.get(position).content);
+        if (!(mDatas.get(position).dateTime== null))
+            holder.tvInfoDate.setText(mDatas.get(position).dateTime);
 
     }
 
@@ -58,12 +67,15 @@ public class MessageRecyclerAdapter extends RecyclerView.Adapter<MessageRecycler
         private MessageRecyclerAdapter.OnItemClickListener mListener;
         TextView tvInfoTitle,tvInfoContent,tvInfoDate;
         ImageView iv_icon;
+        Button onlineBtn,phoneBtn;
         public ViewHolder(View itemView, MessageRecyclerAdapter.OnItemClickListener onItemClickListener) {
             super(itemView);
             tvInfoTitle = (TextView) itemView.findViewById(R.id.message_title);
             tvInfoContent = (TextView) itemView.findViewById(R.id.message_content);
+
             tvInfoDate = (TextView) itemView.findViewById(R.id.message_time);
             iv_icon = (ImageView)itemView.findViewById(R.id.message_image);
+
 
             this.mListener = onItemClickListener;
             itemView.setOnClickListener(new View.OnClickListener() {

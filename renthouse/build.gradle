@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion "28.0.3"
+
     defaultConfig {
         applicationId "com.example.user.renthouse"
         minSdkVersion 16
@@ -49,4 +50,5 @@ dependencies {
     compile project(':xrecyclerview')
     compile project(path: ':citypicker')
     compile files('libs/BaiduLBS_Android.jar')
+    compile project(path: ':PicSelecterLibrary')
 }

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cn.com.mark.multiimage.core.PreferencesUtils;
+
 
 public class MyApplication extends Application {
     public static List<?> images=new ArrayList<>();
@@ -49,6 +51,8 @@ public class MyApplication extends Application {
 
         List list = Arrays.asList(urls);
         images = new ArrayList(list);
+
+        PreferencesUtils.init(this, "multiimage");
 
     }
     public void getScreen(Context aty) {

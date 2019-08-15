@@ -1,1 +1,1 @@
-include ':renthouse', ':banner', ':xrecyclerview', ':citypicker'
+include ':renthouse', ':banner', ':xrecyclerview', ':citypicker', ':PicSelecterLibrary'

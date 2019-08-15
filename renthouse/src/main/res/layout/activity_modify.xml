@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_textColorSelect">
+
+        <ImageView
+            android:id="@+id/contact_iv_goback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftgoback"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/contact_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="账号设置"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
+<RelativeLayout
+    android:id="@+id/changephone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/relativelayout"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改手机号"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gotome"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        />
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/changePwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/changephone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gotome"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <Button
+        android:id="@+id/modify_btn_exitLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:background="@drawable/button_fill_round"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+</RelativeLayout>

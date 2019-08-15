@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.ComplaintActivity;
+import activity.ContactActivity;
 import activity.MessageActivity;
 import activity.MessageDetailsActivity;
+import activity.ModifyActivity;
 import activity.MyInfoActivity;
 import bean.MeAdapterInfoOne;
 import bean.MeAdapterInfoTwo;
@@ -96,7 +98,7 @@ public class MeFragment extends Fragment {
         mTwoAdapter.setItemClickListener(new MeRecyclerTwoAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
                 switch (position){
                     case 0:
                         startActivity(new Intent(getActivity(), MessageActivity.class));
@@ -114,10 +116,10 @@ public class MeFragment extends Fragment {
                         startActivity(new Intent(getActivity(), ComplaintActivity.class));
                         break;
                     case 5:
-
+                        startActivity(new Intent(getActivity(), ContactActivity.class));
                         break;
                     case 6:
-
+                        startActivity(new Intent(getActivity(), ModifyActivity.class));
                         break;
                 }
             }

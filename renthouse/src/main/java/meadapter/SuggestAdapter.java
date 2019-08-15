@@ -40,9 +40,6 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
 
     public SuggestAdapter(@NonNull List<SuggestAdapterInfo> mDatas) {
         this.mDatas = mDatas;
-        for (int i= 0; i < mDatas.size();i++){
-            Log.i("one ",mDatas.get(i).toString());
-        }
 
     }
 
@@ -60,7 +57,7 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
         SuggestAdapterInfo info = mDatas.get(position);
         Log.i("one = ","mDatas.get(position) = "+mDatas.get(position).toString());
 
-        Glide.with(MyApplication.getContext()).load(info.url).placeholder(R.mipmap.background).error(R.mipmap.background);
+        Glide.with(MyApplication.getContext()).load(info.url).override(180, 144).placeholder(R.mipmap.image_add_sel) .error(R.mipmap.image_add_sel).into(holder.ivInfo);
 
     }
 

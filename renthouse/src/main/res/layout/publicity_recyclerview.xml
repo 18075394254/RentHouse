@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+
+        android:layout_marginBottom="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="match_parent"
+                     android:src="@drawable/one"
+                    android:layout_marginLeft="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/publicity_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="杨**"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/one"
+                    android:layout_marginLeft="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/publicity_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="2019-7-25"
+
+                    />
+            </LinearLayout>
+
+           <TextView
+            android:id="@+id/publicity_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="投诉内容"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:textColor="@drawable/textselector"
+            />
+            <TextView
+                android:id="@+id/publicity_tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/publicity_tv_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的交租时间是每月16号，你们从9号之前就开始提醒交租，本是一个值得点赞的方式，但是到了9号，你们就开始推送说我已逾期一天未交租，此种方式对我造成一定的影响，望修正！"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="处理结果"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:textColor="@drawable/textselector"
+                />
+            <TextView
+                android:id="@+id/publicity_tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="亲爱的兔宝，您好，按合同约定每个租期届满前7日交下一期房租，如跟房东协商好交租日期，建议您按照与房东约定的租期缴租即可，后续如有疑问，您可拨打电话10106006进行反馈，巴乐兔祝您生活愉快！"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
