@@ -13,23 +13,9 @@
     <RelativeLayout
         android:id="@+id/login_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
         >
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="注册"
-            android:id="@+id/but_register"
-            android:onClick="click"
-            android:textColor="#ffffff"
-            android:background="#e52525"
-            android:textSize="20dp"
-            android:layout_below="@+id/but_login"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -37,17 +23,20 @@
             android:text="登录"
             android:id="@+id/but_login"
             android:onClick="click"
-            android:background="#545bcb"
+            android:background="@drawable/button_fill_round"
             android:textSize="20dp"
             android:textColor="#ffffff"
             android:layout_below="@+id/edit_password"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="52dp" />
+            android:layout_marginTop="52dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/logo"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -55,7 +44,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="false"
-            android:src="@drawable/logo"
+            android:src="@mipmap/log"
             android:background="#ffffff" />
 
         <EditText
@@ -76,47 +65,43 @@
             android:inputType="textPersonName"
             android:id="@+id/edit_userName"
             android:drawableLeft="@android:drawable/ic_menu_myplaces"
-            android:hint="请输入您的用户名"
+            android:hint="请输入您的手机号"
             android:layout_below="@+id/logo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="20dp" />
 
-        <CheckBox
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="记住密码"
-            android:id="@+id/checkBox"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码？"
+            android:id="@+id/forgetPwd"
             android:layout_below="@+id/edit_password"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:checked="false"
-            android:textSize="15dp" />
-
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/login_success_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="15.0px"
-        android:layout_marginRight="15.0px"
-        android:layout_marginTop="62.0px"
-        android:background="#ff3f3f3f"
-        android:paddingBottom="10.0px"
-        android:paddingTop="21.0px"
-        android:visibility="gone" >
+            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/tab_textColor"
+            android:onClick="click"
+            />
 
         <TextView
-            android:id="@+id/login_success_show"
+            android:id="@+id/register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="#ff3f3f3f"
-            android:textSize="20.0dip" />
+            android:layout_alignParentRight="true"
+            android:text="注册"
+            android:textSize="15sp"
+            android:textColor="@color/tab_textColor"
+            android:layout_below="@+id/edit_password"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:onClick="click"
+            />
+
     </RelativeLayout>
+
+
+
 </RelativeLayout>

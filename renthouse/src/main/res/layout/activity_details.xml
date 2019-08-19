@@ -269,8 +269,8 @@
             android:layout_marginLeft="10dp"
             >
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/collection_set"
                 android:clickable="true"
                 />
@@ -291,8 +291,8 @@
             android:layout_marginLeft="10dp"
             >
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/share"
                 />
             <TextView
@@ -310,7 +310,7 @@
             android:textColor="@color/white"
 
             android:layout_weight="1"
-            android:background="@color/tab_textColorSelect"
+            android:background="@drawable/button_fill_round"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             />
@@ -321,7 +321,7 @@
             android:textColor="@color/white"
 
             android:layout_weight="1"
-            android:background="@color/tab_textColorSelect"
+            android:background="@drawable/button_fill_round"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center"
 
@@ -333,7 +333,7 @@
             android:textColor="@color/white"
 
             android:layout_weight="1"
-            android:background="@color/tab_textColorSelect"
+            android:background="@drawable/button_fill_round"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_gravity="center"

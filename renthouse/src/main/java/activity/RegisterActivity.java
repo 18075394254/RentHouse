@@ -3,6 +3,7 @@ package activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,12 @@ import com.example.user.renthouse.R;
 
 import java.util.ArrayList;
 
+import application.MyApplication;
 import bean.User;
 import utils.UserDatabase;
 
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends AppCompatActivity {
 	private EditText et_name;
 	private EditText et_pwd;
 	private EditText et_pwd2;
@@ -28,12 +30,14 @@ public class RegisterActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//v7包下去除标题栏代码：
+		getSupportActionBar().hide();
+		// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		MyApplication.setWindowStatusBarColor(RegisterActivity.this,R.color.tab_textColorSelect);
+
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//强制为竖屏
 		setContentView(R.layout.activity_register_avt);
-		et_name=(EditText) findViewById(R.id.edit_user_register);
-		et_pwd=(EditText) findViewById(R.id.edit_pwd_register);
-		et_pwd2= (EditText) findViewById(R.id.edit_pwd_2 );
+
 		helper=new UserDatabase(this);
 		list = helper.getAllUsers();
 		
@@ -56,9 +60,6 @@ public class RegisterActivity extends BaseActivity {
 					}
 				}
 
-				for (int i = 0; i < list.size(); i++) {
-					Log.i("====", "name=" + list.get(i).getName());
-				}
 				if (b) {
 					if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd)) {
 
@@ -79,8 +80,7 @@ public class RegisterActivity extends BaseActivity {
 			}
 			break;
 
-			case R.id.but_return:
-				startActivity(new Intent(RegisterActivity.this, LogActivity.class));
+			case R.id.register_iv_goback:
 				finish();
 				break;
 

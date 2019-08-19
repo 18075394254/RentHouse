@@ -19,6 +19,8 @@ import com.example.user.renthouse.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.BrowseActivity;
+import activity.CollectionRecordsActivity;
 import activity.ComplaintActivity;
 import activity.ContactActivity;
 import activity.MessageActivity;
@@ -104,9 +106,10 @@ public class MeFragment extends Fragment {
                         startActivity(new Intent(getActivity(), MessageActivity.class));
                         break;
                     case 1:
-
+                        startActivity(new Intent(getActivity(), BrowseActivity.class));
                         break;
                     case 2:
+                        startActivity(new Intent(getActivity(), CollectionRecordsActivity.class));
 
                         break;
                     case 3:

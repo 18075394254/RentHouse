@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.renthouse.R;
@@ -26,7 +27,7 @@ import utils.UserDatabase;
 public class LogActivity extends Activity {
 	private EditText et_name;
 	private EditText et_pwd;
-	private CheckBox box;
+	private TextView forgetPwdText,registerText;
 	UserDatabase helper;
 	ArrayList<User> list;
 	Boolean b=false;
@@ -42,46 +43,13 @@ public class LogActivity extends Activity {
 
 		et_name=(EditText) findViewById(R.id.edit_userName);
 		et_pwd=(EditText) findViewById(R.id.edit_password);
-		box= (CheckBox) findViewById(R.id.checkBox);
+		forgetPwdText= (TextView) findViewById(R.id.forgetPwd);
+		registerText = (TextView) findViewById(R.id.register_text);
 		ImageView image = (ImageView) findViewById(R.id.logo);             //使用ImageView显示logo
-		image.setImageResource(R.drawable.logo);
+
 		
 		helper=new UserDatabase(this);
 		list = helper.getAllUsers();
-		Log.i("===", "user" + list.size());
-
-		if (list.size()==0){
-			helper.add("Administrator","123456");
-		}
-		for(int i=0;i<list.size();i++){
-			Log.i("wp123", "user" + list.get(i));
-		}
-		if(list.size()==1){
-			et_name.setText("Administrator");
-			et_pwd.setText("123456");
-			box.setChecked(true);
-		}
-		else{
-			sharedPreferences=getSharedPreferences("user", Activity.MODE_PRIVATE);
-			if(sharedPreferences != null) {
-				String name = sharedPreferences.getString("name", "");
-				Boolean flag=sharedPreferences.getBoolean("isChecked",false);
-				et_name.setText(name);
-				Log.i("====", "sharepreference  " + name);
-				if(flag) {
-					box.setChecked(true);
-					String pwd = sharedPreferences.getString("pwd", "");
-					et_pwd.setText(pwd);
-					Log.i("====", "sharepreference  " + pwd);
-				}else{
-					box.setChecked(false);
-					et_pwd.setText("");
-				}
-
-			}
-		}
-
-
 
 
 	}
@@ -111,7 +79,6 @@ public class LogActivity extends Activity {
 						editor=sp.edit();
 						editor.putString("name",name);
 						editor.putString("pwd",pwd);
-						editor.putBoolean("isChecked",box.isChecked());
 						editor.commit();
 						finish();
 						b=true;
@@ -123,8 +90,14 @@ public class LogActivity extends Activity {
 				}
 
 			break;
-		case R.id.but_register:
+		case R.id.register_text:
 			
+			startActivityForResult(new Intent(LogActivity.this, RegisterActivity.class), 0);
+			finish();
+			break;
+
+		case R.id.forgetPwd:
+
 			startActivityForResult(new Intent(LogActivity.this, RegisterActivity.class), 0);
 			finish();
 			break;

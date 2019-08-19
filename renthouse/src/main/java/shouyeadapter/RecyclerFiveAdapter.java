@@ -93,9 +93,11 @@ public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapte
 
             }else if (type == 2){
                 shouye_five_text_price.setVisibility(View.VISIBLE);
-            }else{
+            }else if(type == 3){
                 shouye_five_text_name.setVisibility(View.VISIBLE);
                 shouye_five_iv_icon.setVisibility(View.VISIBLE);
+                shouye_five_text_updatetime.setVisibility(View.VISIBLE);
+            }else{
                 shouye_five_text_updatetime.setVisibility(View.VISIBLE);
             }
 
