@@ -27,9 +27,10 @@ import mainfragment.WishFragment;
 
 public class MainActivity extends BaseActivity implements IBackInterface{
     public TabLayout mTabLayout;
-    ViewPager mViewPager;
+    public ViewPager mViewPager;
     private Fragment upLoadfragment; //用于传递监听back键的fragment
     private Fragment tiefragment; //用于传递监听back键的fragment
+    private Fragment shouyefragment;
     String[] tab_titles = new String[]{"首页","心愿单","发布","求租贴","我的"};
     int[] tab_imgs = new int[]{R.drawable.tab_shouye,R.drawable.tab_wish,R.drawable.tab_upload,
     R.drawable.tab_tie,R.drawable.tab_me};
@@ -52,15 +53,23 @@ public class MainActivity extends BaseActivity implements IBackInterface{
         //添加Fragment到list中
         upLoadFragment = new UpLoadFragment();
         tieFragment = new TieFragment();
-        mFragments.add(new ShouYeFragment());
+        shouyefragment = new ShouYeFragment();
+        mFragments.add(shouyefragment);
         mFragments.add(new WishFragment());
         mFragments.add(upLoadFragment);
         mFragments.add(tieFragment);
         mFragments.add(new MeFragment());
 
+
         initView();
 
     }
+
+public void gotoViewPager(int position){
+    if (mViewPager != null){
+        mViewPager.setCurrentItem(position);
+    }
+}
 
     /**
      * 初始化各控件
@@ -191,4 +200,6 @@ public class MainActivity extends BaseActivity implements IBackInterface{
             alertDialog.show();
         }
     }
+
+
 }

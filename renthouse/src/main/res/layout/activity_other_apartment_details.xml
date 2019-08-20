@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_textColorSelect">
+
+        <ImageView
+            android:id="@+id/apartment_iv_goback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftgoback"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="房源详情"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
+    <utils.MyNestedScrollView
+        android:id="@+id/other_apratment_details_nestedSV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativelayout"
+        >
+        <LinearLayout
+            android:id="@+id/linRootView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="218dp"
+        android:src="@mipmap/card2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="魔方公寓(仙霞路店)"
+        android:textColor="@color/tab_textColor"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="威宁路55号"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/silver"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="公寓介绍"
+        android:textColor="@color/tab_textColor"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍公寓介绍"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="在租房源"
+        android:textColor="@color/tab_textColor"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        />
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/other_apartment_details_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
+        />
+        </LinearLayout>
+    </utils.MyNestedScrollView>
+</LinearLayout>

@@ -54,6 +54,9 @@
         <activity android:name="activity.ModifyActivity"/>
         <activity android:name="activity.BrowseActivity"/>
         <activity android:name="activity.CollectionRecordsActivity"/>
+        <activity android:name="activity.BrandApartmentActivity"/>
+        <activity android:name="activity.ApartmentSourceActivity"/>
+        <activity android:name="activity.OtherApartmentDetailsActivity"/>
         <activity
             android:name="cn.com.mark.multiimage.core.ImageMainActivity"
             android:label="@string/app_name" >

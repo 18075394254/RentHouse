@@ -217,6 +217,16 @@
             android:text="查看更多"
             />
     </RelativeLayout>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:textSize="15sp"
+        android:text="水、电、燃气价格透明，居住更安心"
+        android:layout_marginLeft="10dp"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/shouye_fourRecyclerView"
         android:layout_width="match_parent"

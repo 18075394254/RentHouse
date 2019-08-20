@@ -1,5 +1,6 @@
 package shouyeadapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -97,8 +98,14 @@ public class RecyclerFiveAdapter extends RecyclerView.Adapter<RecyclerFiveAdapte
                 shouye_five_text_name.setVisibility(View.VISIBLE);
                 shouye_five_iv_icon.setVisibility(View.VISIBLE);
                 shouye_five_text_updatetime.setVisibility(View.VISIBLE);
-            }else{
+            }else if(type == 4){
                 shouye_five_text_updatetime.setVisibility(View.VISIBLE);
+            }else{
+                shouye_five_text_price.setVisibility(View.VISIBLE);
+                shouye_five_text_price.setText("这是公寓名称");
+                shouye_five_text_price.setTextColor(Color.BLACK);
+                shouye_five_text_updatetime.setVisibility(View.VISIBLE);
+                shouye_five_text_updatetime.setText("3500元/月");
             }
 
             this.mListener = onItemClickListener;

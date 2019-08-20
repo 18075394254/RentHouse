@@ -47,8 +47,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.BaiduMapTest;
+import activity.BrandApartmentActivity;
 import activity.DetailsActivity;
 import activity.ListActivity;
+import activity.MainActivity;
 import activity.MessageActivity;
 import activity.RecommendActivity;
 import activity.RoomSourceActivity;
@@ -156,6 +158,8 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
         transformers.add(ZoomOutTranformer.class);
         transformers.add(ZoomOutSlideTransformer.class);*/
     }
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -450,7 +454,16 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
            @Override
            public void setOnItemClickListener(View view, int position) {
               // Toast.makeText(getActivity(),"位置 "+position+" 被点击了",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), RoomSourceActivity.class));
+               if (position == 2){
+                   startActivity(new Intent(getActivity(), BrandApartmentActivity.class));
+               }else if(position == 4) {
+
+               }else if(position == 5){
+
+               }else{
+                   startActivity(new Intent(getActivity(), RoomSourceActivity.class));
+               }
+
            }
        });
     }
@@ -627,7 +640,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
 
         cityName = sp.getString("city","上海");
         shouye_city_Tv.setText(cityName);
-        if (!NetWorkUtils.isMobileDataEnable(MyApplication.getContext())){
+      /*  if (!NetWorkUtils.isMobileDataEnable(MyApplication.getContext())){
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
                     setTitle("当前没有网络，是否打开网络设置？").
                     setIcon(R.mipmap.log).
@@ -646,7 +659,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
                     }).
                     create();
             alertDialog.show();
-        }else {
+        }else {*/
 
             //在使用SDK各组件之前初始化context信息，传入ApplicationContext
             //声明LocationClient类
@@ -694,7 +707,7 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
                     }
                 });
             }
-        }
+      //  }
 
     }
 
