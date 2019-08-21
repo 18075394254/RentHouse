@@ -2,13 +2,19 @@ package activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 
 import com.example.user.renthouse.R;
@@ -62,6 +68,9 @@ public class MainActivity extends BaseActivity implements IBackInterface{
 
 
         initView();
+        IntentFilter filter1=new IntentFilter();
+        filter1.addAction("android.renthouse.action.RECEIVEDATA");
+        MainActivity.this.registerReceiver(mReceiver, filter1);
 
     }
 
@@ -201,5 +210,23 @@ public void gotoViewPager(int position){
         }
     }
 
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
 
+            if (action.equals("android.renthouse.action.RECEIVEDATA")) {
+                Bundle bundle = intent.getExtras();
+                int position = bundle.getInt("position");
+                gotoViewPager(position);
+            }
+
+        }
+
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
+    }
 }

@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.user.renthouse.R;
+import com.mob.MobSDK;
 
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class MyApplication extends Application {
         images = new ArrayList(list);
 
         PreferencesUtils.init(this, "multiimage");
+        MobSDK.init(this);
 
     }
     public void getScreen(Context aty) {

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+// 添加插件
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 26
     buildToolsVersion "28.0.3"
@@ -11,6 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    MobSDK {
+        appKey "26f376f759456"
+        appSecret "10e016b736b32f8d247e75f4948d099b"
+        SMSSDK {}
     }
 
     aaptOptions.cruncherEnabled = false

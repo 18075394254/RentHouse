@@ -98,7 +98,7 @@ public class LogActivity extends Activity {
 
 		case R.id.forgetPwd:
 
-			startActivityForResult(new Intent(LogActivity.this, RegisterActivity.class), 0);
+			startActivityForResult(new Intent(LogActivity.this,ForgetPwdActivity.class), 0);
 			finish();
 			break;
 		}

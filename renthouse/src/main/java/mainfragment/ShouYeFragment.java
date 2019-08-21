@@ -457,9 +457,15 @@ public class ShouYeFragment extends Fragment implements OnBannerListener{
                if (position == 2){
                    startActivity(new Intent(getActivity(), BrandApartmentActivity.class));
                }else if(position == 4) {
-
+                   Intent intent = new Intent();
+                   intent.putExtra("position", 2);
+                   intent.setAction("android.renthouse.action.RECEIVEDATA");
+                   getActivity().sendBroadcast(intent);
                }else if(position == 5){
-
+                   Intent intent = new Intent();
+                   intent.putExtra("position", 3);
+                   intent.setAction("android.renthouse.action.RECEIVEDATA");
+                   getActivity().sendBroadcast(intent);
                }else{
                    startActivity(new Intent(getActivity(), RoomSourceActivity.class));
                }
