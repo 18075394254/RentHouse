@@ -13,14 +13,14 @@ import com.example.user.renthouse.R;
 import java.util.List;
 
 import application.MyApplication;
-import bean.SuggestAdapterInfo;
+import bean.CreditAdapterInfo;
 
 /**
  * 作者：请叫我百米冲刺 on 2016/12/6 下午1:33
  * 邮箱：mail@hezhilin.cc
  */
 
-public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHolder> {
+public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.ViewHolder> {
 
     private int type;
 
@@ -38,14 +38,14 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
     }
 
 
-    private List<SuggestAdapterInfo> mDatas;
+    private List<CreditAdapterInfo> mDatas;
 
-    public SuggestAdapter(@NonNull List<SuggestAdapterInfo> mDatas) {
+    public CreditAdapter(@NonNull List<CreditAdapterInfo> mDatas) {
         this.mDatas = mDatas;
 
     }
 
-    public List<SuggestAdapterInfo> getmDatas() {
+    public List<CreditAdapterInfo> getmDatas() {
         return mDatas;
     }
 
@@ -56,10 +56,9 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        SuggestAdapterInfo info = mDatas.get(position);
-        Log.i("one = ","mDatas.get(position) = "+mDatas.get(position).toString());
-
-        Glide.with(MyApplication.getContext()).load(info.url).override(180, 144).placeholder(R.mipmap.image_add_sel) .error(R.mipmap.image_add_sel).into(holder.ivInfo);
+        CreditAdapterInfo info = mDatas.get(position);
+       //holder.ivInfo.setImageResource(info.image);
+        Glide.with(MyApplication.getContext()).load(info.url).override(180, 144).placeholder(info.image) .error(info.image).into(holder.ivInfo);
 
     }
 
@@ -70,7 +69,7 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private OnItemClickListener mListener;
-       
+
         ImageView ivInfo;
         public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);

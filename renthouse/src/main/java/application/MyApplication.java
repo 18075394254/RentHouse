@@ -31,6 +31,7 @@ public class MyApplication extends Application {
     public static int H,W;
     public static Application app;
     private static Context context;
+    public static int type0 = 0;
     public static int type1 = 1;
     public static int type2 = 2;
     public static int type3 = 3;

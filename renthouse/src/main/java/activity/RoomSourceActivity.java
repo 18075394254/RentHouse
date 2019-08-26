@@ -203,7 +203,7 @@ public class RoomSourceActivity extends AppCompatActivity {
             }
 
             //设置adapter的数据
-        mRoomSourceOneAdapter = new RoomSourceAdapter(fourInfos);
+        mRoomSourceOneAdapter = new RoomSourceAdapter(fourInfos,MyApplication.type0);
             mOneRecyclerView.setAdapter(mRoomSourceOneAdapter);
             mOneRecyclerView.setLayoutManager(mLayoutManager);
 

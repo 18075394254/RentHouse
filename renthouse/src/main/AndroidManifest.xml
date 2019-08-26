@@ -58,6 +58,10 @@
         <activity android:name="activity.ApartmentSourceActivity"/>
         <activity android:name="activity.OtherApartmentDetailsActivity"/>
         <activity android:name="activity.ForgetPwdActivity"/>
+        <activity android:name="activity.CreditActivity"/>
+        <activity android:name="activity.MyPostActivity"/>
+        <activity android:name="activity.MyPostDetailsActivity"/>
+        <activity android:name="activity.MyPublishActivity"/>
         <activity
             android:name="cn.com.mark.multiimage.core.ImageMainActivity"
             android:label="@string/app_name" >

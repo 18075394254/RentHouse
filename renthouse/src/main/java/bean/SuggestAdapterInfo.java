@@ -6,4 +6,5 @@ package bean;
 
 public class SuggestAdapterInfo {
     public String url;
+
 }

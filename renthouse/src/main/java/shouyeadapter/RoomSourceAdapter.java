@@ -20,7 +20,7 @@ import bean.RoomSouarceInfo;
 
 public class RoomSourceAdapter extends RecyclerView.Adapter<RoomSourceAdapter.ViewHolder>{
 
-
+    int type = 0;
     //定义一个接口
     public interface OnItemClickListener{
         void setOnItemClickListener(View view, int position);
@@ -33,9 +33,9 @@ public class RoomSourceAdapter extends RecyclerView.Adapter<RoomSourceAdapter.Vi
     public void setItemClickListener(RoomSourceAdapter.OnItemClickListener mItemClickListener){
         this.mItemClickListener = mItemClickListener;
     }
-    public RoomSourceAdapter(@NonNull List<RoomSouarceInfo> mDatas) {
+    public RoomSourceAdapter(@NonNull List<RoomSouarceInfo> mDatas,int type) {
         this.mDatas = mDatas;
-
+        this.type = type;
 
     }
 
@@ -55,7 +55,11 @@ public class RoomSourceAdapter extends RecyclerView.Adapter<RoomSourceAdapter.Vi
     public void onBindViewHolder(RoomSourceAdapter.ViewHolder holder, int position) {
         RoomSouarceInfo info = mDatas.get(position);
         Log.i("one = ","mDatas.get(position) = "+mDatas.get(position).toString());
-        holder.ivInfo.setImageResource(R.mipmap.background);
+        if (type == 0) {
+            holder.ivInfo.setImageResource(R.mipmap.background);
+        }else{
+            holder.ivInfo.setImageResource(R.mipmap.mofang);
+        }
 
     }
 

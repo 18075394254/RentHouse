@@ -121,7 +121,7 @@ public class BrandApartmentActivity extends AppCompatActivity{
         }
 
         //设置adapter的数据
-        mRoomSourceOneAdapter = new RoomSourceAdapter(fourInfos);
+        mRoomSourceOneAdapter = new RoomSourceAdapter(fourInfos,MyApplication.type1);
         mRecyclerView.setAdapter(mRoomSourceOneAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
 

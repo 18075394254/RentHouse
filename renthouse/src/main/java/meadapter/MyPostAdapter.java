@@ -13,14 +13,14 @@ import com.example.user.renthouse.R;
 import java.util.List;
 
 import application.MyApplication;
-import bean.SuggestAdapterInfo;
+import bean.MyPostAdapterInfo;
 
 /**
  * 作者：请叫我百米冲刺 on 2016/12/6 下午1:33
  * 邮箱：mail@hezhilin.cc
  */
 
-public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHolder> {
+public class MyPostAdapter extends RecyclerView.Adapter<MyPostAdapter.ViewHolder> {
 
     private int type;
 
@@ -38,28 +38,25 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
     }
 
 
-    private List<SuggestAdapterInfo> mDatas;
+    private List<MyPostAdapterInfo> mDatas;
 
-    public SuggestAdapter(@NonNull List<SuggestAdapterInfo> mDatas) {
+    public MyPostAdapter(@NonNull List<MyPostAdapterInfo> mDatas) {
         this.mDatas = mDatas;
 
     }
 
-    public List<SuggestAdapterInfo> getmDatas() {
+    public List<MyPostAdapterInfo> getmDatas() {
         return mDatas;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.suggest_image_item, null),mItemClickListener);
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.mypost_recycler_item, null),mItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        SuggestAdapterInfo info = mDatas.get(position);
-        Log.i("one = ","mDatas.get(position) = "+mDatas.get(position).toString());
 
-        Glide.with(MyApplication.getContext()).load(info.url).override(180, 144).placeholder(R.mipmap.image_add_sel) .error(R.mipmap.image_add_sel).into(holder.ivInfo);
 
     }
 
@@ -70,11 +67,11 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private OnItemClickListener mListener;
-       
+
         ImageView ivInfo;
         public ViewHolder(View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
-            ivInfo = (ImageView)itemView.findViewById(R.id.suggest_item_imageview);
+            //ivInfo = (ImageView)itemView.findViewById(R.id.suggest_item_imageview);
             mListener = onItemClickListener;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
